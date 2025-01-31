@@ -1,4 +1,5 @@
 class SeriesController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_series, only: %i[ show edit update destroy ]
 
   # GET /series or /series.json

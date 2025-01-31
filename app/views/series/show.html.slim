@@ -3,8 +3,8 @@ p style="color: green" = notice
 == render @series
 
 div
-  => link_to "Edit this series", edit_series_path(@series)
-  '|
+  => link_to "Edit this series", edit_series_path(@series) if authenticated?
+  
   =< link_to "Back to series", series_index_path
 
-  = button_to "Destroy this series", @series, method: :delete
+  = button_to "Destroy this series", @series, method: :delete if authenticated?

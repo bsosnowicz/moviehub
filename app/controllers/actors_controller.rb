@@ -1,4 +1,5 @@
 class ActorsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_actor, only: %i[ show edit update destroy ]
 
   # GET /actors or /actors.json

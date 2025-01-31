@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies or /movies.json
