@@ -1,5 +1,5 @@
 class RegisterController < ApplicationController
-
+ allow_unauthenticated_access
   def new
     @user = User.new
   end
@@ -16,7 +16,7 @@ class RegisterController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email_address, :password, :password_confirmation)
   end
 
   def redirect_if_logged_in

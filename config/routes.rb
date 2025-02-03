@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   root "home#index"
-  resource :session
   resources :passwords, param: :token
   get "home/index"
   resources :movies
   resources :series
   resources :actors
   resources :register, only: [:new, :create]
+  resource :session
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
