@@ -21,13 +21,6 @@ html
     = javascript_importmap_tags
 
   body
-  nav
-    ul
-      li = link_to "Home", root_path
-      li = link_to "Movies", movies_path
-      li = link_to "Actors", actors_path
-      li = link_to "Series", series_index_path
-
-    = button_to "Logout", session_path, method: :delete if authenticated? 
+  = render '/shared/navbar'
   main
     = yield
