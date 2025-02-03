@@ -25,7 +25,12 @@ movies = [
   { title: "The Matrix", description: "A computer hacker discovers the reality of his world.", rating: 8.7, release_date: "1999-03-31", length: 136 },
   { title: "Interstellar", description: "A team of explorers travels through a wormhole in space.", rating: 8.9, release_date: "2014-11-07", length: 169 },
   { title: "Gladiator", description: "A former Roman General seeks revenge.", rating: 8.5, release_date: "2000-05-05", length: 155 },
-  { title: "Titanic", description: "A love story aboard the doomed Titanic.", rating: 8.6, release_date: "1997-12-19", length: 195 }
+  { title: "Titanic", description: "A love story aboard the doomed Titanic.", rating: 8.6, release_date: "1997-12-19", length: 195 },
+  { title: "The Last Horizon", description: "Sci-fi thriller about humanity's first contact with an ancient alien civilization.", rating: 0, release_date: "2025-06-15", length: 142 },
+  { title: "Shadows of the Empire", description: "A medieval fantasy epic about a fallen kingdom seeking revenge.", rating: 0, release_date: "2025-07-22", length: 156 },
+  { title: "Neon City", description: "Cyberpunk action movie following a hacker trying to escape a corrupt megacorporation.", rating: 0, release_date: "2025-09-10", length: 129 },
+  { title: "Silent Code", description: "A psychological horror where a coder accidentally creates an AI that manipulates reality.", rating: 0, release_date: "2025-10-01", length: 118 },
+  { title: "Titanium Valkyrie", description: "A military sci-fi adventure following an elite squadron of mecha pilots in deep space.", rating: 0, release_date: "2025-11-20", length: 135 }
 ]
 
 movies.each { |movie| Movie.find_or_create_by(movie) }
@@ -41,7 +46,11 @@ series = [
   { title: "The Boys", description: "A group of vigilantes fights corrupt superheroes.", rating: 8.9, release_date: "2019-07-26", no_of_seasons: 4 },
   { title: "House of Cards", description: "A ruthless politician rises to power.", rating: 8.6, release_date: "2013-02-01", no_of_seasons: 6 },
   { title: "Better Call Saul", description: "The prequel to Breaking Bad.", rating: 8.7, release_date: "2015-02-08", no_of_seasons: 6 },
-  { title: "The Witcher", description: "A monster hunter struggles to find his place.", rating: 8.5, release_date: "2019-12-20", no_of_seasons: 3 }
+  { title: "The Witcher", description: "A monster hunter struggles to find his place.", rating: 8.5, release_date: "2019-12-20", no_of_seasons: 3 },
+  { title: "Echoes of Time", description: "A time-travel drama where a historian discovers she can alter key historical events.", rating: 0, release_date: "2025-08-05", no_of_seasons: 1 },
+  { title: "Dark Skies", description: "A mystery thriller about a small town plagued by strange disappearances and government conspiracies.", rating: 0, release_date: "2025-09-18", no_of_seasons: 2 },
+  { title: "Cybernetica", description: "A dystopian sci-fi series exploring the rise of AI overlords and human resistance.", rating: 0, release_date: "2025-10-12", no_of_seasons: 1 },
+  { title: "Legends of Avalon", description: "A reimagining of Arthurian legends, mixing magic, politics, and war.", rating: 0, release_date: "2025-11-05", no_of_seasons: 3 },
+  { title: "Zero Point", description: "An espionage thriller about a rogue physicist trying to stop a black hole experiment from destroying Earth.", rating: 0, release_date: "2025-12-01", no_of_seasons: 1 }
 ]
 
-series.each { |s| Series.find_or_create_by(s) }
