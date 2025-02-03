@@ -1,10 +1,39 @@
 h1 Homepage 
 
-=link_to "Series", Series
-=link_to "Actors", Actor
+h2 Most popular
 
-#movies 
-- @movies.each do |movie|
-    h2 = movie.title
-    p 
-    =link_to "Show this movie", movie
+button onclick="showSection('movies')" Movies
+button onclick="showSection('series')" Series
+button onclick="showSection('actors')" Actors
+
+div id="movies-section"
+  h3 Movies
+  - @movies.order(rating: :desc).limit(5).each do |movie|
+    h4 = movie.title
+    p = movie.rating
+    p = movie.release_date
+    = link_to "Show this movie", movie
+
+div id="series-section" style="display: none;"
+  h3 Series
+  - @series.order(rating: :desc).limit(5).each do |serie|
+    h4 = serie.title
+    p = serie.rating
+    p = serie.release_date
+    = link_to "Show this serie", serie
+
+div id="actors-section" style="display: none;"
+  h3 Actors
+  - @actors.order(rating: :desc).limit(5).each do |actor|
+    h4 = actor.name + " " + actor.surname
+    p = actor.rating 
+    = link_to "Show this actor", actor
+
+javascript:
+    function showSection(section) {
+        document.getElementById("movies-section").style.display = "none";
+        document.getElementById("series-section").style.display = "none";
+        document.getElementById("actors-section").style.display = "none";
+        
+        document.getElementById(`${section}-section`).style.display = "block";
+    }
