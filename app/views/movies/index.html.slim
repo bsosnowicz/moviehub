@@ -7,5 +7,5 @@ h1 Movies
     == render movie
     p
       = link_to "Show this movie", movie
-
+= paginate @movies
 = link_to "New movie", new_movie_path

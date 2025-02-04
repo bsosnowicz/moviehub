@@ -7,5 +7,6 @@ h1 Actors
     == render actor
     p
       = link_to "Show this actor", actor
-
+      
+= paginate @actors
 = link_to "New actor", new_actor_path
