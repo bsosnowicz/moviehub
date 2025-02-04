@@ -1,50 +1,30 @@
-h1 Homepage 
+h1 Homepage
 
 h2 Most popular
 
-button onclick="showSection('movies')" Movies
-button onclick="showSection('series')" Series
-button onclick="showSection('actors')" Actors
+div
+  = link_to "Movies", root_path(category: "movies", unreleased_category: @unreleased_category)
+  = link_to "Series", root_path(category: "series", unreleased_category: @unreleased_category)
+  = link_to "Actors", root_path(category: "actors", unreleased_category: @unreleased_category)
 
-div id="movies-section"
-  h3 Movies
-  - @movies.order(rating: :desc).limit(5).each do |movie|
-    h4 = movie.title
-    p = "Rating : #{movie.rating}"
-    p = "Release date : #{movie.release_date}"
-    = link_to "Show this movie", movie
+h3 = "Most Popular #{@category.capitalize}"
 
-div id="series-section" style="display: none;"
-  h3 Series
-  - @series.order(rating: :desc).limit(5).each do |serie|
-    h4 = serie.title
-    p = "Rating : #{serie.rating}"
-    p = "Release date : #{serie.release_date}"
-    = link_to "Show this serie", serie
+- @items.each do |item|
+  h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
+  p Rating: #{item.rating}
+  - if item.respond_to?(:release_date)
+    p Release date: #{item.release_date}
+  = link_to "Show this #{@category.singularize}", item
 
-div id="actors-section" style="display: none;"
-  h3 Actors
-  - @actors.order(rating: :desc).limit(5).each do |actor|
-    h4 = actor.name + " " + actor.surname
-    p = "Rating : #{actor.rating}" 
-    = link_to "Show this actor", actor
+h2 Unreleased
 
-h3 Unreleased 
--@moviesUnreleased.each do |movie|
-    h4 = movie.title
-    p = "Rating : Unreleased"
-    p = "Release date : Unreleased"
+div
+  =link_to "Movies", root_path(category: @category, unreleased_category: "movies")
+  =link_to "Series", root_path(category: @category, unreleased_category: "series")
 
--@seriesUnreleased.each do |serie|
-    h4 = serie.title
-    p = "Rating : Unreleased"
-    p = "Release date : Unreleased"
+h3 = "Unreleased #{@unreleased_category.capitalize}"
 
-javascript:
-    function showSection(section) {
-        document.getElementById("movies-section").style.display = "none";
-        document.getElementById("series-section").style.display = "none";
-        document.getElementById("actors-section").style.display = "none";
-        
-        document.getElementById(`${section}-section`).style.display = "block";
-    }
+- @unreleased_items.each do |item|
+  h4 = item.title
+  p Rating: Unreleased
+  p Release date: #{item.release_date}
