@@ -1,0 +1,45 @@
+.trendingContainer{
+    margin-top:30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail{
+    width: 100%
+}
+
+.categoriesMenu{
+    margin: 0 auto;
+    gap: 12px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.trendingList{
+    list-style:none;
+    display: flex;
+    gap: 10px;
+}
+
+.trendingList li{
+    width: calc(100%/5);
+}
+
+.unreleasedList{
+    list-style:none;
+    display: flex;
+    gap: 10px;
+}
+
+.unreleasedContainer{
+    margin-top:30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.unreleasedMenu{
+    margin: 0 auto;
+    gap: 12px;
+    display: flex;
+    margin-bottom: 30px;     
+}

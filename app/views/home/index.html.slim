@@ -1,30 +1,36 @@
-h1 Homepage
+= stylesheet_link_tag 'home', media: 'css'
+div.trendingContainer
 
-h2 Most popular
+  h3 = "Trending #{@category.capitalize}"
 
-div
-  = link_to "Movies", root_path(category: "movies", unreleased_category: @unreleased_category)
-  = link_to "Series", root_path(category: "series", unreleased_category: @unreleased_category)
-  = link_to "Actors", root_path(category: "actors", unreleased_category: @unreleased_category)
+  div.categoriesMenu
+   = link_to "Movies", root_path(category: "movies", unreleased_category: @unreleased_category), class:"unstyledButton"
+   = link_to "Series", root_path(category: "series", unreleased_category: @unreleased_category), class:"unstyledButton"
+   = link_to "Actors", root_path(category: "actors", unreleased_category: @unreleased_category), class:"unstyledButton"
 
-h3 = "Most Popular #{@category.capitalize}"
+  ul.trendingList
+    - @items.each do |item|
+      li
+        = image_tag "thumbnail.jpg", class:"thumbnail"
+        h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
+        p Rating: #{item.rating}
+        - if item.respond_to?(:release_date)
+          p Release date: #{item.release_date}
+        = link_to "Show this #{@category.singularize}", item, class:"unstyledButton"
 
-- @items.each do |item|
-  h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
-  p Rating: #{item.rating}
-  - if item.respond_to?(:release_date)
-    p Release date: #{item.release_date}
-  = link_to "Show this #{@category.singularize}", item
 
-h2 Unreleased
+div.unreleasedContainer
 
-div
-  =link_to "Movies", root_path(category: @category, unreleased_category: "movies")
-  =link_to "Series", root_path(category: @category, unreleased_category: "series")
+  h3 = "Unreleased #{@unreleased_category.capitalize}"
+  
+  div.categoriesMenu
+    =link_to "Movies", root_path(category: @category, unreleased_category: "movies"), class:"unstyledButton"
+    =link_to "Series", root_path(category: @category, unreleased_category: "series"), class:"unstyledButton"
 
-h3 = "Unreleased #{@unreleased_category.capitalize}"
 
-- @unreleased_items.each do |item|
-  h4 = item.title
-  p Rating: Unreleased
-  p Release date: #{item.release_date}
+  ul.unreleasedList
+    - @unreleased_items.each do |item|
+      li
+        = image_tag "thumbnail.jpg", class:"thumbnail"
+        h4 = item.title
+        p Release date: #{item.release_date}

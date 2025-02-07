@@ -1,15 +1,19 @@
-= stylesheet_link_tag 'application', media: 'all'
+= stylesheet_link_tag 'navbar', media: 'css'
 
 nav.navbar
+    h3.logo MovieHub
     ul.itemList
-        = image_tag("logo.png", alt: "Logo")
-        li = link_to "Home", root_path
-        li = link_to "Movies", movies_path
-        li = link_to "Series", series_index_path
-        li = link_to "Actors", actors_path
+        li = link_to "Home", root_path, class:"unstyledButton"
+        li = link_to "Movies", movies_path, class:"unstyledButton"
+        li = link_to "Series", series_index_path, class:"unstyledButton"
+        li = link_to "Actors", actors_path, class:"unstyledButton"
+    input.searchBar placeholder="Search MovieHub"
     - if authenticated?
         / li = link_to 'Profile', profile_path
-        li = button_to 'Logout', session_path, method: :delete 
+        p Watchlist
+        p Favourites
+        li.buttonLogout = button_to 'Logout', session_path, method: :delete, class:"unstyledButton"
     - else
         li = link_to 'Login', new_session_path
-        li = link_to 'Register', new_register_path 
+        li = link_to 'Register', new_register_path
+    p EN
