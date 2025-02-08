@@ -1,14 +1,14 @@
-= stylesheet_link_tag 'movies', media: 'css'
+= stylesheet_link_tag 'collection', media: 'css'
 
 p style="color: green" = notice
 
-ul.moviesList
+button = link_to "Add new", new_movie_path
+ul.collectionList
   - @movies.each do |movie|
     li
-      = image_tag "thumbnail.jpg", class:"galleryThumbnail"
-      h4 = movie.title
-      p = movie.category
-      p
-        = link_to "Show this movie", movie
+      = link_to movie_path(movie) do
+        .collectionItem
+          = image_tag "thumbnail.jpg", class:"collectionThumbnail"
+          h4.collectionTitle = movie.title
+          p.collectionCategory = "#{movie.category} | #{movie.release_date}"
 = paginate @movies
-= link_to "New movie", new_movie_path

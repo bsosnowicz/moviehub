@@ -1,0 +1,33 @@
+.collectionList {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  gap: 30px;
+}
+
+.collectionList li {
+  border-radius: 5px;
+  flex: 0 0 calc(33.3333% - 30px);
+}
+
+.collectionThumbnail {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.collectionTitle,
+.collectionCategory {
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.collectionTitle {
+  color: var(--secondary-color);
+}
+
+.collectionCategory {
+  color: var(--theme-color);
+}

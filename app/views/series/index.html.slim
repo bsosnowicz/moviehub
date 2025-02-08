@@ -1,11 +1,14 @@
+= stylesheet_link_tag 'collection', media: 'css'
+
 p style="color: green" = notice
 
-h1 Series
-
-#series
-  - @series.each do |series|
-    == render series
-    p
-      = link_to "Show this series", series
+button = link_to "Add new", new_series_path
+ul.collectionList
+  - @series.each do |serie|
+    li
+      = link_to series_path(serie) do
+        .collectionItem
+          = image_tag "thumbnail.jpg", class:"collectionThumbnail"
+          h4.collectionTitle = serie.title
+          p.collectionCategory = "#{serie.category} | #{serie.release_date}"
 = paginate @series
-= link_to "New series", new_series_path

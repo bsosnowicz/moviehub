@@ -5,7 +5,7 @@ class SeriesController < ApplicationController
   # GET /series or /series.json
   def index
     # @series = Series.all
-    @series = Series.page(params[:page]).per(5)
+    @series = Series.page(params[:page]).per(6)
   end
 
   # GET /series/1 or /series/1.json
@@ -67,6 +67,6 @@ class SeriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def series_params
-      params.expect(series: [ :title, :description, :rating, :release_date, :no_of_seasons ])
+      params.expect(series: [ :title, :description, :rating, :release_date, :no_of_seasons, :category ])
     end
 end
