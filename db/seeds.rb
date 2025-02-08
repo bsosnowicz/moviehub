@@ -54,3 +54,4 @@ series = [
   { title: "Zero Point", description: "An espionage thriller about a rogue physicist trying to stop a black hole experiment from destroying Earth.", rating: 0, release_date: "2025-12-01", no_of_seasons: 1 }
 ]
 
+series.each { |serie| Series.find_or_create_by(serie) }

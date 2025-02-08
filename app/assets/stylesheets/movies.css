@@ -1,0 +1,19 @@
+.moviesList {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  list-style: none;
+  gap: 30px;
+}
+
+.moviesList li {
+  border-radius: 5px;
+  flex: 0 0 calc(33.3333% - 30px);
+}
+
+.galleryThumbnail {
+  width: 100%;
+  border-radius: 4px;
+}

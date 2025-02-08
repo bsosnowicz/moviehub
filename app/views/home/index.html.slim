@@ -6,7 +6,6 @@ div.trendingContainer
   div.categoriesMenu
    = link_to "Movies", root_path(category: "movies", unreleased_category: @unreleased_category), class:"unstyledButton"
    = link_to "Series", root_path(category: "series", unreleased_category: @unreleased_category), class:"unstyledButton"
-   = link_to "Actors", root_path(category: "actors", unreleased_category: @unreleased_category), class:"unstyledButton"
 
   ul.trendingList
     - @items.each do |item|
@@ -34,3 +33,10 @@ div.unreleasedContainer
         = image_tag "thumbnail.jpg", class:"thumbnail"
         h4 = item.title
         p Release date: #{item.release_date}
+div.actorsContainer
+  ul.actorsList 
+    - @actors_items.each do |actor|
+      li 
+        = image_tag "thumbnail.jpg", class:"actorThumbnail"
+        h4 = actor.name + " " + actor.surname
+        p = actor.rating

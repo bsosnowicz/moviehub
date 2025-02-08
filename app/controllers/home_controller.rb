@@ -9,8 +9,6 @@ class HomeController < ApplicationController
         Movie.ransack(params[:q])
       when "series"
         Series.ransack(params[:q])
-      when "actors"
-        Actor.ransack(params[:q])
       end
 
     @items = @q&.result&.order(rating: :desc)&.limit(5) || []
@@ -23,6 +21,11 @@ class HomeController < ApplicationController
         Series.ransack(params[:q_unreleased])
       end
 
-      @unreleased_items = @q_unreleased&.result&.where('release_date > ?', Date.today) || []
+    @unreleased_items = @q_unreleased&.result&.where('release_date > ?', Date.today) || []
+
+    @q_actors =
+      Actor.ransack(params[:q_actors])
+
+    @actors_items = @q_actors&.result&.order(rating: :desc)&.limit(5) || []
   end
 end

@@ -1,45 +1,66 @@
-.trendingContainer{
-    margin-top:30px;
-    display: flex;
-    flex-direction: column;
+.trendingContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
-.thumbnail{
-    width: 100%
+.thumbnail {
+  width: 100%;
 }
 
-.categoriesMenu{
-    margin: 0 auto;
-    gap: 12px;
-    display: flex;
-    margin-bottom: 30px;
+.categoriesMenu {
+  margin: 0 auto;
+  gap: 12px;
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.trendingList{
-    list-style:none;
-    display: flex;
-    gap: 10px;
+.trendingList {
+  list-style: none;
+  display: flex;
+  gap: 10px;
 }
 
-.trendingList li{
-    width: calc(100%/5);
+.trendingList li {
+  width: calc(100% / 5);
 }
 
-.unreleasedList{
-    list-style:none;
-    display: flex;
-    gap: 10px;
+.unreleasedList {
+  list-style: none;
+  display: flex;
+  gap: 10px;
 }
 
-.unreleasedContainer{
-    margin-top:30px;
-    display: flex;
-    flex-direction: column;
+.unreleasedContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
-.unreleasedMenu{
-    margin: 0 auto;
-    gap: 12px;
-    display: flex;
-    margin-bottom: 30px;     
+.unreleasedMenu {
+  margin: 0 auto;
+  gap: 12px;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.actorsContainer {
+  margin-top: 60px;
+}
+
+.actorsList {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.actorsList li {
+  width: (calc(100% / 5));
+  text-align: center;
+}
+
+.actorThumbnail {
+  border-radius: 1000px;
+  width: 160px;
+  height: 160px;
 }

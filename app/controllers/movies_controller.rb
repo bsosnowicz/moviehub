@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     # @movies = Movie.all
-    @movies = Movie.page(params[:page]).per(5)
+    @movies = Movie.page(params[:page]).per(6)
   end
 
   # GET /movies/1 or /movies/1.json

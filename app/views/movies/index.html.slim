@@ -1,11 +1,13 @@
+= stylesheet_link_tag 'movies', media: 'css'
+
 p style="color: green" = notice
 
-h1 Movies
-
-#movies
+ul.moviesList
   - @movies.each do |movie|
-    == render movie
-    p
-      = link_to "Show this movie", movie
+    li
+      = image_tag "thumbnail.jpg", class:"galleryThumbnail"
+      == render movie
+      p
+        = link_to "Show this movie", movie
 = paginate @movies
 = link_to "New movie", new_movie_path
