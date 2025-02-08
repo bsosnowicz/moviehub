@@ -1,0 +1,57 @@
+.collectionItemContainer {
+  margin-top: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.collectionItemThumbnail {
+  width: 480px;
+  border-radius: 5px;
+}
+
+.collectionItemTitle {
+  font-size: 32px;
+}
+
+.collectionItemTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.collectionItemData {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.collectionItemRating,
+.collectionItemDate,
+.collectionItemLength,
+.collectionItemCategory {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.collectionItemButtonContainer {
+  display: flex;
+  gap: 15px;
+}
+
+.collectionItemDeleteButton,
+.collectionItemEditButton {
+  padding: 14px;
+  color: var(--secondary-color);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.collectionItemEditButton {
+  background-color: var(--theme-color);
+}
+
+.collectionItemDeleteButton {
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
+}

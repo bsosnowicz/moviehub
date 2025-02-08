@@ -1,16 +1,44 @@
+/ div id="#{dom_id series}"
+/   p
+/     strong Title:
+/     =< series.title
+/   p
+/     strong Description:
+/     =< series.description
+/   p
+/     strong Rating:
+/     =< series.rating
+/   p
+/     strong Release date:
+/     =< series.release_date
+/   p
+/     strong No of seasons:
+/     =< series.no_of_seasons
+
+/ = stylesheet_link_tag 'collection_item', media: 'css'
+
 div id="#{dom_id series}"
-  p
-    strong Title:
-    =< series.title
-  p
-    strong Description:
-    =< series.description
-  p
-    strong Rating:
-    =< series.rating
-  p
-    strong Release date:
-    =< series.release_date
-  p
-    strong No of seasons:
-    =< series.no_of_seasons
+  div.collectionItemContainer
+    = image_tag "thumbnail.jpg", class:"collectionItemThumbnail"
+    div.collectionItemTextContainer
+      p.collectionItemTitle
+        =< series.title.upcase
+      div.collectionItemData
+        p.collectionItemRating
+          strong Rating:
+          =< "#{series.rating} / 10.0"
+        p.collectionItemDate
+          strong Release date:
+          =< series.release_date
+        p.collectionItemLength
+          strong Length:
+          =< "#{series.no_of_seasons} seasons"
+        p.collectionItemCategory
+          strong Category:
+          =< series.category
+      p.collectionItemDescription
+        strong Description:
+        =< series.description   
+      div.collectionItemButtonContainer
+        => link_to "Edit this serie", edit_series_path(@series), class:"collectionItemEditButton" if authenticated?
+        = button_to "Delete this serie", @series, method: :delete, class:"collectionItemDeleteButton"  if authenticated?

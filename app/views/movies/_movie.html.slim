@@ -1,16 +1,27 @@
+= stylesheet_link_tag 'collection_item', media: 'css'
+
 div id="#{dom_id movie}"
-  p
-    strong Title:
-    =< movie.title
-  p
-    strong Description:
-    =< movie.description
-  p
-    strong Rating:
-    =< movie.rating
-  p
-    strong Release date:
-    =< movie.release_date
-  p
-    strong Length:
-    =< movie.length
+  div.collectionItemContainer
+    = image_tag "thumbnail.jpg", class:"collectionItemThumbnail"
+    div.collectionItemTextContainer
+      p.collectionItemTitle
+        =< movie.title.upcase
+      div.collectionItemData
+        p.collectionItemRating
+          strong Rating:
+          =< "#{movie.rating} / 10.0"
+        p.collectionItemDate
+          strong Release date:
+          =< movie.release_date
+        p.collectionItemLength
+          strong Length:
+          =< "#{movie.length} min"
+        p.collectionItemCategory
+          strong Category:
+          =< movie.category
+      p.collectionItemDescription
+        strong Description:
+        =< movie.description   
+      div.collectionItemButtonContainer
+        => link_to "Edit this movie", edit_movie_path(@movie), class:"collectionItemEditButton" if authenticated?
+        = button_to "Delete this movie", @movie, method: :delete, class:"collectionItemDeleteButton"  if authenticated?
