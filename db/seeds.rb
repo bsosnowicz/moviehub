@@ -16,42 +16,38 @@ actors.each { |actor| Actor.find_or_create_by(actor) }
 
 # Movies
 movies = [
-  { title: "Inception", description: "A thief who enters the dreams of others to steal secrets.", rating: 9.0, release_date: "2010-07-16", length: 148 },
-  { title: "The Shawshank Redemption", description: "Two imprisoned men bond over years in prison.", rating: 9.3, release_date: "1994-09-23", length: 142 },
-  { title: "The Dark Knight", description: "Batman faces his greatest enemy, the Joker.", rating: 9.1, release_date: "2008-07-18", length: 152 },
-  { title: "Forrest Gump", description: "The story of a slow-witted but kind-hearted man.", rating: 8.8, release_date: "1994-07-06", length: 142 },
-  { title: "Fight Club", description: "An insomniac office worker forms an underground fight club.", rating: 8.9, release_date: "1999-10-15", length: 139 },
-  { title: "Pulp Fiction", description: "A series of interconnected crime stories.", rating: 9.0, release_date: "1994-10-14", length: 154 },
-  { title: "The Matrix", description: "A computer hacker discovers the reality of his world.", rating: 8.7, release_date: "1999-03-31", length: 136 },
-  { title: "Interstellar", description: "A team of explorers travels through a wormhole in space.", rating: 8.9, release_date: "2014-11-07", length: 169 },
-  { title: "Gladiator", description: "A former Roman General seeks revenge.", rating: 8.5, release_date: "2000-05-05", length: 155 },
-  { title: "Titanic", description: "A love story aboard the doomed Titanic.", rating: 8.6, release_date: "1997-12-19", length: 195 },
-  { title: "The Last Horizon", description: "Sci-fi thriller about humanity's first contact with an ancient alien civilization.", rating: 0, release_date: "2025-06-15", length: 142 },
-  { title: "Shadows of the Empire", description: "A medieval fantasy epic about a fallen kingdom seeking revenge.", rating: 0, release_date: "2025-07-22", length: 156 },
-  { title: "Neon City", description: "Cyberpunk action movie following a hacker trying to escape a corrupt megacorporation.", rating: 0, release_date: "2025-09-10", length: 129 },
-  { title: "Silent Code", description: "A psychological horror where a coder accidentally creates an AI that manipulates reality.", rating: 0, release_date: "2025-10-01", length: 118 },
-  { title: "Titanium Valkyrie", description: "A military sci-fi adventure following an elite squadron of mecha pilots in deep space.", rating: 0, release_date: "2025-11-20", length: 135 }
+  { title: "Inception", description: "A thief who enters the dreams of others to steal secrets.", rating: 9.0, release_date: "2010-07-16", length: 148, category: "Sci-Fi" },
+  { title: "The Shawshank Redemption", description: "Two imprisoned men bond over years in prison.", rating: 9.3, release_date: "1994-09-23", length: 142, category: "Drama" },
+  { title: "The Dark Knight", description: "Batman faces his greatest enemy, the Joker.", rating: 9.1, release_date: "2008-07-18", length: 152, category: "Action" },
+  { title: "Forrest Gump", description: "The story of a slow-witted but kind-hearted man.", rating: 8.8, release_date: "1994-07-06", length: 142, category: "Drama" },
+  { title: "Fight Club", description: "An insomniac office worker forms an underground fight club.", rating: 8.9, release_date: "1999-10-15", length: 139, category: "Thriller" },
+  { title: "Pulp Fiction", description: "A series of interconnected crime stories.", rating: 9.0, release_date: "1994-10-14", length: 154, category: "Crime" },
+  { title: "The Matrix", description: "A computer hacker discovers the reality of his world.", rating: 8.7, release_date: "1999-03-31", length: 136, category: "Sci-Fi" },
+  { title: "Interstellar", description: "A team of explorers travels through a wormhole in space.", rating: 8.9, release_date: "2014-11-07", length: 169, category: "Sci-Fi" },
+  { title: "Gladiator", description: "A former Roman General seeks revenge.", rating: 8.5, release_date: "2000-05-05", length: 155, category: "Historical" },
+  { title: "Titanic", description: "A love story aboard the doomed Titanic.", rating: 8.6, release_date: "1997-12-19", length: 195, category: "Romance" },
+  { title: "Silent Code", description: "A psychological horror where a coder accidentally creates an AI that manipulates reality.", rating: 0, release_date: "2025-10-01", length: 118, category: "Horror" },
+  { title: "Titanium Valkyrie", description: "A military sci-fi adventure following an elite squadron of mecha pilots in deep space.", rating: 0, release_date: "2025-11-20", length: 135, category: "Sci-Fi" }
 ]
 
 movies.each { |movie| Movie.find_or_create_by(movie) }
 
 # Series
 series = [
-  { title: "Breaking Bad", description: "A high school chemistry teacher turns to meth production.", rating: 9.5, release_date: "2008-01-20", no_of_seasons: 5 },
-  { title: "Game of Thrones", description: "Nine noble families fight for control of Westeros.", rating: 9.3, release_date: "2011-04-17", no_of_seasons: 8 },
-  { title: "Stranger Things", description: "A group of kids uncover a supernatural mystery.", rating: 8.7, release_date: "2016-07-15", no_of_seasons: 4 },
-  { title: "The Office", description: "A mockumentary on a group of office workers.", rating: 8.9, release_date: "2005-03-24", no_of_seasons: 9 },
-  { title: "Friends", description: "A sitcom about six friends living in NYC.", rating: 8.8, release_date: "1994-09-22", no_of_seasons: 10 },
-  { title: "The Mandalorian", description: "A lone bounty hunter navigates the galaxy.", rating: 8.7, release_date: "2019-11-12", no_of_seasons: 3 },
-  { title: "The Boys", description: "A group of vigilantes fights corrupt superheroes.", rating: 8.9, release_date: "2019-07-26", no_of_seasons: 4 },
-  { title: "House of Cards", description: "A ruthless politician rises to power.", rating: 8.6, release_date: "2013-02-01", no_of_seasons: 6 },
-  { title: "Better Call Saul", description: "The prequel to Breaking Bad.", rating: 8.7, release_date: "2015-02-08", no_of_seasons: 6 },
-  { title: "The Witcher", description: "A monster hunter struggles to find his place.", rating: 8.5, release_date: "2019-12-20", no_of_seasons: 3 },
-  { title: "Echoes of Time", description: "A time-travel drama where a historian discovers she can alter key historical events.", rating: 0, release_date: "2025-08-05", no_of_seasons: 1 },
-  { title: "Dark Skies", description: "A mystery thriller about a small town plagued by strange disappearances and government conspiracies.", rating: 0, release_date: "2025-09-18", no_of_seasons: 2 },
-  { title: "Cybernetica", description: "A dystopian sci-fi series exploring the rise of AI overlords and human resistance.", rating: 0, release_date: "2025-10-12", no_of_seasons: 1 },
-  { title: "Legends of Avalon", description: "A reimagining of Arthurian legends, mixing magic, politics, and war.", rating: 0, release_date: "2025-11-05", no_of_seasons: 3 },
-  { title: "Zero Point", description: "An espionage thriller about a rogue physicist trying to stop a black hole experiment from destroying Earth.", rating: 0, release_date: "2025-12-01", no_of_seasons: 1 }
+  { title: "Breaking Bad", description: "A high school chemistry teacher turns to meth production.", rating: 9.5, release_date: "2008-01-20", no_of_seasons: 5, category: "Crime" },
+  { title: "Game of Thrones", description: "Nine noble families fight for control of Westeros.", rating: 9.3, release_date: "2011-04-17", no_of_seasons: 8, category: "Fantasy" },
+  { title: "Stranger Things", description: "A group of kids uncover a supernatural mystery.", rating: 8.7, release_date: "2016-07-15", no_of_seasons: 4, category: "Sci-Fi" },
+  { title: "The Office", description: "A mockumentary on a group of office workers.", rating: 8.9, release_date: "2005-03-24", no_of_seasons: 9, category: "Comedy" },
+  { title: "Friends", description: "A sitcom about six friends living in NYC.", rating: 8.8, release_date: "1994-09-22", no_of_seasons: 10, category: "Comedy" },
+  { title: "The Mandalorian", description: "A lone bounty hunter navigates the galaxy.", rating: 8.7, release_date: "2019-11-12", no_of_seasons: 3, category: "Sci-Fi" },
+  { title: "The Boys", description: "A group of vigilantes fights corrupt superheroes.", rating: 8.9, release_date: "2019-07-26", no_of_seasons: 4, category: "Action" },
+  { title: "Better Call Saul", description: "The prequel to Breaking Bad.", rating: 8.7, release_date: "2015-02-08", no_of_seasons: 6, category: "Crime" },
+  { title: "The Witcher", description: "A monster hunter struggles to find his place.", rating: 8.5, release_date: "2019-12-20", no_of_seasons: 3, category: "Fantasy" },
+  { title: "Echoes of Time", description: "A time-travel drama where a historian discovers she can alter key historical events.", rating: 0, release_date: "2025-08-05", no_of_seasons: 1, category: "Sci-Fi" },
+  { title: "Dark Skies", description: "A mystery thriller about a small town plagued by strange disappearances and government conspiracies.", rating: 0, release_date: "2025-09-18", no_of_seasons: 2, category: "Mystery" },
+  { title: "Cybernetica", description: "A dystopian sci-fi series exploring the rise of AI overlords and human resistance.", rating: 0, release_date: "2025-10-12", no_of_seasons: 1, category: "Sci-Fi" },
+  { title: "Legends of Avalon", description: "A reimagining of Arthurian legends, mixing magic, politics, and war.", rating: 0, release_date: "2025-11-05", no_of_seasons: 3, category: "Fantasy" },
+  { title: "Zero Point", description: "An espionage thriller about a rogue physicist trying to stop a black hole experiment from destroying Earth.", rating: 0, release_date: "2025-12-01", no_of_seasons: 1, category: "Thriller" }
 ]
 
 series.each { |serie| Series.find_or_create_by(serie) }

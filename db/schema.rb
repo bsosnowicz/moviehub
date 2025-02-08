@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_31_203644) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_08_170117) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -30,6 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_203644) do
     t.decimal "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "series", force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_203644) do
     t.integer "no_of_seasons"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "sessions", force: :cascade do |t|

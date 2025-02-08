@@ -6,7 +6,8 @@ ul.moviesList
   - @movies.each do |movie|
     li
       = image_tag "thumbnail.jpg", class:"galleryThumbnail"
-      == render movie
+      h4 = movie.title
+      p = movie.category
       p
         = link_to "Show this movie", movie
 = paginate @movies
