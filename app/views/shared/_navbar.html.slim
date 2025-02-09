@@ -1,12 +1,13 @@
-= stylesheet_link_tag 'navbar', media: 'css'
-
 nav.navbar
     h3.logo MovieHub
-    ul.itemList
-        li = link_to "Home", root_path, class:"unstyledButton"
-        li = link_to "Movies", movies_path, class:"unstyledButton"
-        li = link_to "Series", series_index_path, class:"unstyledButton"
-        li = link_to "Actors", actors_path, class:"unstyledButton"
+    = image_tag 'menu.svg', class: 'menuButton', id: "menu-toggle"
+    div.menu#menu.menuHidden
+        ul.menuItemList
+            li = link_to "Home", root_path, class:"unstyledButton"
+            li = link_to "Movies", movies_path, class:"unstyledButton"
+            li = link_to "Series", series_index_path, class:"unstyledButton"
+            li = link_to "Actors", actors_path, class:"unstyledButton"
+            = image_tag 'close.svg', class: 'menuClose', id:'close-menu'
     input.searchBar placeholder="Search MovieHub"
     - if authenticated?
         / li = link_to 'Profile', profile_path
@@ -17,3 +18,22 @@ nav.navbar
         li = link_to 'Login', new_session_path
         li = link_to 'Register', new_register_path
     p EN
+
+javascript:
+ document.addEventListener("turbo:load", () => {
+    const mobileMenu = document.getElementById("menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const closeMenu = document.getElementById("close-menu");
+
+    if (mobileMenu && menuToggle && closeMenu) {
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.add("menuActive");
+            mobileMenu.classList.remove("menuHidden");
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileMenu.classList.remove("menuActive");
+            mobileMenu.classList.add("menuHidden");
+        });
+    }
+ });
