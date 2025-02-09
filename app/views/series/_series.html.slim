@@ -19,7 +19,7 @@
 
 div id="#{dom_id series}"
   div.collectionItemContainer
-    = image_tag "thumbnail.jpg", class:"collectionItemThumbnail"
+    = image_tag series.image_url, class:"collectionItemThumbnail"
     div.collectionItemTextContainer
       p.collectionItemTitle
         =< series.title.upcase
