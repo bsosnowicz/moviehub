@@ -5,7 +5,7 @@
 }
 
 .collectionItemThumbnail {
-  width: 480px;
+  max-width: 480px;
   border-radius: 5px;
 }
 

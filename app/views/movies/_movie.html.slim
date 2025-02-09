@@ -2,7 +2,7 @@
 
 div id="#{dom_id movie}"
   div.collectionItemContainer
-    = image_tag "thumbnail.jpg", class:"collectionItemThumbnail"
+    = image_tag movie.image_url, class:"collectionItemThumbnail"
     div.collectionItemTextContainer
       p.collectionItemTitle
         =< movie.title.upcase

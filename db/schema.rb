@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_08_170117) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_09_215136) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_08_170117) do
     t.decimal "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_08_170117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.string "image_url"
   end
 
   create_table "series", force: :cascade do |t|
@@ -42,6 +44,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_08_170117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.string "image_url"
   end
 
   create_table "sessions", force: :cascade do |t|

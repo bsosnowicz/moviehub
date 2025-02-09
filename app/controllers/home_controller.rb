@@ -21,7 +21,7 @@ class HomeController < ApplicationController
         Series.ransack(params[:q_unreleased])
       end
 
-    @unreleased_items = @q_unreleased&.result&.where('release_date > ?', Date.today) || []
+    @unreleased_items = @q_unreleased&.result&.where('release_date > ?', Date.today)&.limit(5) || []
 
     @q_actors =
       Actor.ransack(params[:q_actors])
