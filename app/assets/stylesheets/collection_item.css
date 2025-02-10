@@ -28,7 +28,8 @@
 .collectionItemRating,
 .collectionItemDate,
 .collectionItemLength,
-.collectionItemCategory {
+.collectionItemCategory,
+.collectionItemHeight {
   width: 300px;
   display: flex;
   justify-content: space-between;

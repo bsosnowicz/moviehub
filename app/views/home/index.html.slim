@@ -10,13 +10,12 @@ div.trendingContainer
   ul.trendingList
     - @items.each do |item|
       li
-        = image_tag item.image_url, class:"thumbnail"
-        h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
-        p Rating: #{item.rating}
-        - if item.respond_to?(:release_date)
-          p Release date: #{item.release_date}
-        = link_to "Show this #{@category.singularize}", item, class:"unstyledButton"
-
+        =link_to item do
+          = image_tag item.image_url, class:"thumbnail"
+          h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
+          p Rating: #{item.rating}
+          - if item.respond_to?(:release_date)
+            p Release date: #{item.release_date}  
 
 div.unreleasedContainer
 
@@ -30,14 +29,16 @@ div.unreleasedContainer
   ul.unreleasedList
     - @unreleased_items.each do |item|
       li
-        = image_tag item.image_url, class:"thumbnail"
-        h4 = item.title
-        p Release date: #{item.release_date}
+        = link_to item do
+          = image_tag item.image_url, class:"thumbnail"
+          h4 = item.title
+          p Release date: #{item.release_date}
 
 div.actorsContainer
   ul.actorsList 
     - @actors_items.each do |actor|
       li 
-        = image_tag actor.image_url, class:"actorThumbnail"
-        h4 = actor.name + " " + actor.surname
-        p = actor.rating
+        =link_to actor do
+          = image_tag actor.image_url, class:"actorThumbnail"
+          h4 = actor.name + " " + actor.surname
+          p = actor.rating

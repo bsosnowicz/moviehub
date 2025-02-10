@@ -1,22 +1,3 @@
-/ div id="#{dom_id series}"
-/   p
-/     strong Title:
-/     =< series.title
-/   p
-/     strong Description:
-/     =< series.description
-/   p
-/     strong Rating:
-/     =< series.rating
-/   p
-/     strong Release date:
-/     =< series.release_date
-/   p
-/     strong No of seasons:
-/     =< series.no_of_seasons
-
-/ = stylesheet_link_tag 'collection_item', media: 'css'
-
 div id="#{dom_id series}"
   div.collectionItemContainer
     = image_tag series.image_url, class:"collectionItemThumbnail"

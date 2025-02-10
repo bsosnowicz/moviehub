@@ -21,8 +21,15 @@
   gap: 10px;
 }
 
-.trendingList li {
+.trendingList li,
+.unreleasedList li {
   width: calc(100% / 5);
+}
+
+.trendingList li a,
+.unreleasedList li a,
+.actorsList li a {
+  color: var(--secondary-color);
 }
 
 .unreleasedList {

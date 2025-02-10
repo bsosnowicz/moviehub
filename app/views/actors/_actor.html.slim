@@ -1,19 +1,22 @@
 div id="#{dom_id actor}"
-  p
-    strong Name:
-    =< actor.name
-  p
-    strong Surname:
-    =< actor.surname
-  p
-    strong Date of birth:
-    =< actor.date_of_birth
-  p
-    strong Place of birth:
-    =< actor.place_of_birth
-  p
-    strong Height:
-    =< actor.height
-  p
-    strong Rating:
-    =< actor.rating
+ div.collectionItemContainer
+    = image_tag actor.image_url, class:"collectionItemThumbnail"
+    div.collectionItemTextContainer
+      p.collectionItemTitle
+        =< "#{actor.name} #{actor.surname}"
+      div.collectionItemData
+        p.collectionItemRating
+          strong Rating:
+          =< "#{actor.rating} / 10.0"
+        p.collectionItemDate
+          strong Date of birth: 
+          =< actor.date_of_birth
+        p.collectionItemDate
+          strong Place of birth: 
+          =< actor.place_of_birth
+        p.collectionItemHeight
+          strong Height:
+          =< "#{actor.height} min"
+      div.collectionItemButtonContainer
+        => link_to "Edit this actor", edit_actor_path(actor),  class:"collectionItemEditButton" if authenticated?
+        = button_to "Destroy this actor", @actor, method: :delete, class:"collectionItemDeleteButton" if authenticated?

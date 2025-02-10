@@ -1,10 +1,5 @@
 p style="color: green" = notice
 
+=< link_to "Back to actors", actors_path
+
 == render @actor
-
-div
-  => link_to "Edit this actor", edit_actor_path(@actor) if authenticated?
-
-  =< link_to "Back to actors", actors_path
-
-  = button_to "Destroy this actor", @actor, method: :delete if authenticated?
