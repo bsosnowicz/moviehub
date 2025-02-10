@@ -18,7 +18,6 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "slim-rails"
 gem 'ransack'
-gem 'kaminari'
 gem 'cancancan'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
@@ -68,3 +67,5 @@ group :test do
 end
 
 gem "hotwire-livereload", "~> 2.0", :group => :development
+
+gem "kaminari", "~> 1.2", :github => "kaminari/kaminari"
