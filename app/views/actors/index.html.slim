@@ -2,11 +2,14 @@ p style="color: green" = notice
 
 h1 Actors
 
-#actors
+ul.collectionList
   - @actors.each do |actor|
-    == render actor
-    p
-      = link_to "Show this actor", actor
+    li 
+      = link_to actor_path(actor) do
+        .collectionItem
+          = image_tag actor.image_url, class:"collectionThumbnail"
+          h4.collectionTitle = "#{actor.name} #{actor.surname}"
+          p.collectionRating = "#{actor.rating} / 10" 
       
 = paginate @actors
 = link_to "New actor", new_actor_path

@@ -5,7 +5,7 @@ class ActorsController < ApplicationController
   # GET /actors or /actors.json
   def index
     # @actors = Actor.all
-    @actors = Actor.page(params[:page]).per(5)
+    @actors = Actor.page(params[:page]).per(6)
   end
 
   # GET /actors/1 or /actors/1.json

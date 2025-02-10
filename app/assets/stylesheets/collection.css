@@ -2,6 +2,7 @@
   margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0;
   list-style: none;
   gap: 30px;
@@ -28,6 +29,7 @@
   color: var(--secondary-color);
 }
 
-.collectionCategory {
+.collectionCategory,
+.collectionRating {
   color: var(--theme-color);
 }
