@@ -1,5 +1,6 @@
 nav.navbar
-    h3.logo MovieHub
+    = link_to root_path do
+        = image_tag '/images/logo.png', class: "logo"
     = image_tag 'menu.svg', class: 'menuButton', id: "menu-toggle"
     div.menu#menu.menuHidden
         ul.menuItemList

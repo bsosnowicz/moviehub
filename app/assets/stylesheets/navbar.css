@@ -7,9 +7,7 @@
 }
 
 .logo {
-  background-color: var(--theme-color);
-  padding: 4px;
-  color: var(--primary-color);
+  width: 132px;
 }
 
 .itemList {
