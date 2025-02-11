@@ -2,7 +2,6 @@
 
 p style="color: green" = notice
 
-button = link_to "Add new", new_movie_path
 ul.collectionList
   - @movies.each do |movie|
     li
@@ -11,4 +10,6 @@ ul.collectionList
           = image_tag movie.image_url, class:"collectionThumbnail"
           h4.collectionTitle = movie.title
           p.collectionCategory = "#{movie.category} | #{movie.release_date}"
+
+button.addNewButton = link_to "+ Add new movie", new_movie_path
 = paginate @movies

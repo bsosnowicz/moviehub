@@ -56,3 +56,7 @@
   background-color: transparent;
   border: 1px solid var(--secondary-color);
 }
+
+.backButton{
+color: var(--secondary-color);
+}

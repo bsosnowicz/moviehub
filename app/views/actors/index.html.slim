@@ -11,5 +11,5 @@ ul.collectionList
           h4.collectionTitle = "#{actor.name} #{actor.surname}"
           p.collectionRating = "#{actor.rating} / 10" 
       
+button.addNewButton = link_to "+ Add new actor", new_actor_path
 = paginate @actors
-= link_to "New actor", new_actor_path

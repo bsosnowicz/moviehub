@@ -2,7 +2,6 @@
 
 p style="color: green" = notice
 
-button = link_to "Add new", new_series_path
 ul.collectionList
   - @series.each do |serie|
     li
@@ -11,4 +10,5 @@ ul.collectionList
           = image_tag serie.image_url, class:"collectionThumbnail"
           h4.collectionTitle = serie.title
           p.collectionCategory = "#{serie.category} | #{serie.release_date}"
+button.addNewButton = link_to "+ Add new series", new_series_path
 = paginate @series
