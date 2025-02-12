@@ -7,7 +7,7 @@ ul.collectionList
     li
       = link_to movie_path(movie) do
         .collectionItem
-          = image_tag movie.image_url, class:"collectionThumbnail"
+          = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionThumbnail"
           h4.collectionTitle = movie.title
           p.collectionCategory = "#{movie.category} | #{movie.release_date}"
 

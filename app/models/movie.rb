@@ -5,6 +5,7 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
   validates :length, numericality: { only_integer: true, greater_than: 30, less_than: 300 }
   validates :category, presence: true
+  has_one_attached :my_file
   validates :image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "must be a valid URL" }, allow_blank: true
 
   def self.ransackable_attributes(auth_object = nil)

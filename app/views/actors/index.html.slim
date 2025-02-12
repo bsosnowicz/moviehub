@@ -7,7 +7,7 @@ ul.collectionList
     li 
       = link_to actor_path(actor) do
         .collectionItem
-          = image_tag actor.image_url, class:"collectionThumbnail"
+          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"collectionThumbnail"
           h4.collectionTitle = "#{actor.name} #{actor.surname}"
           p.collectionRating = "#{actor.rating} / 10" 
       

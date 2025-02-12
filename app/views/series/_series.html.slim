@@ -1,6 +1,6 @@
 div id="#{dom_id series}"
   div.collectionItemContainer
-    = image_tag series.image_url, class:"collectionItemThumbnail"
+    = image_tag series.my_file.attached? ? url_for(series.my_file) : series.image_url, class:"collectionItemThumbnail"
     div.collectionItemTextContainer
       p.collectionItemTitle
         =< series.title.upcase

@@ -11,7 +11,7 @@ div.trendingContainer
     - @items.each do |item|
       li
         =link_to item do
-          = image_tag item.image_url, class:"thumbnail"
+          = image_tag item.my_file.attached? ? url_for(item.my_file) : item.image_url, class:"thumbnail"
           h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
           p Rating: #{item.rating}
           - if item.respond_to?(:release_date)
@@ -30,7 +30,7 @@ div.unreleasedContainer
     - @unreleased_items.each do |item|
       li
         = link_to item do
-          = image_tag item.image_url, class:"thumbnail"
+          = image_tag item.my_file.attached? ? url_for(item.my_file) : item.image_url, class:"thumbnail"
           h4 = item.title
           p Release date: #{item.release_date}
 
@@ -39,6 +39,6 @@ div.actorsContainer
     - @actors_items.each do |actor|
       li 
         =link_to actor do
-          = image_tag actor.image_url, class:"actorThumbnail"
+          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
           h4 = actor.name + " " + actor.surname
           p = actor.rating

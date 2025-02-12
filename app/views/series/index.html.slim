@@ -7,7 +7,7 @@ ul.collectionList
     li
       = link_to series_path(serie) do
         .collectionItem
-          = image_tag serie.image_url, class:"collectionThumbnail"
+          = image_tag serie.my_file.attached? ? url_for(serie.my_file) : serie.image_url, class:"collectionThumbnail"
           h4.collectionTitle = serie.title
           p.collectionCategory = "#{serie.category} | #{serie.release_date}"
 button.addNewButton = link_to "+ Add new series", new_series_path

@@ -67,6 +67,6 @@ class ActorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def actor_params
-      params.expect(actor: [ :name, :surname, :date_of_birth, :place_of_birth, :height, :rating, :image_url ])
+      params.expect(actor: [ :name, :surname, :date_of_birth, :place_of_birth, :height, :rating, :image_url, :my_file ])
     end
 end

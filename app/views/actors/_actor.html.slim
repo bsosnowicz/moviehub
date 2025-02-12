@@ -1,6 +1,6 @@
 div id="#{dom_id actor}"
  div.collectionItemContainer
-    = image_tag actor.image_url, class:"collectionItemThumbnail"
+    = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"collectionItemThumbnail"
     div.collectionItemTextContainer
       p.collectionItemTitle
         =< "#{actor.name} #{actor.surname}"
