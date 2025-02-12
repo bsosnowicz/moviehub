@@ -26,7 +26,7 @@ javascript:
     const menuToggle = document.getElementById("menu-toggle");
     const closeMenu = document.getElementById("close-menu");
 
-    if (mobileMenu && menuToggle && closeMenu) {
+    if (menuToggle && closeMenu) {
         menuToggle.addEventListener("click", () => {
             mobileMenu.classList.add("menuActive");
             mobileMenu.classList.remove("menuHidden");
@@ -38,3 +38,8 @@ javascript:
         });
     }
  });
+
+ document.addEventListener("turbo:before-visit", () =>{
+    mobileMenu.classList.remove("menuActive")
+    mobileMenu.classList.add("menuHidden")
+ })

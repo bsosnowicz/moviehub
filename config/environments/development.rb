@@ -16,6 +16,9 @@ Rails.application.configure do
   # Enable server timing.
   config.server_timing = true
 
+  #google active storage
+  config.active_storage.service = :google
+  
   # Enable/disable Action Controller caching. By default Action Controller caching is disabled.
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

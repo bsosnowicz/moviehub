@@ -55,6 +55,7 @@
 .collectionItemDeleteButton {
   background-color: transparent;
   border: 1px solid var(--secondary-color);
+  cursor: pointer;
 }
 
 .backButton{
