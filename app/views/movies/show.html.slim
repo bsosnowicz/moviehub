@@ -2,4 +2,14 @@ p style="color: green" = notice
 
 =< link_to "Back to movies", movies_path, class:"backButton"
 
+
 == render @movie
+
+div.actorsContainer
+  ul.actorsList 
+    - @actors.each do |actor|
+      li 
+        =link_to actor do
+          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
+          h4 = actor.name + " " + actor.surname
+          p = actor.rating

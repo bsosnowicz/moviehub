@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_200004) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_12_230420) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,6 +49,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_200004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
+  end
+
+  create_table "actors_movies", id: false, force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "actor_id", null: false
+  end
+
+  create_table "actors_series", id: false, force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.integer "series_id", null: false
+    t.index ["actor_id", "series_id"], name: "index_actors_series_on_actor_id_and_series_id"
+    t.index ["series_id", "actor_id"], name: "index_actors_series_on_series_id_and_actor_id"
   end
 
   create_table "movies", force: :cascade do |t|

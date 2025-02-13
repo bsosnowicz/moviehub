@@ -9,7 +9,8 @@ actors = [
   { name: "Robert", surname: "Downey Jr.", date_of_birth: "1965-04-04", place_of_birth: "New York, USA", height: 174, rating: 9.4, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg" },
   { name: "Chris", surname: "Hemsworth", date_of_birth: "1983-08-11", place_of_birth: "Melbourne, Australia", height: 190, rating: 9.1, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg" },
   { name: "Emma", surname: "Watson", date_of_birth: "1990-04-15", place_of_birth: "Paris, France", height: 165, rating: 8.8, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/A14lLCZYDhfYdBa0fFRpwMDiwRN.jpg" },
-  { name: "Denzel", surname: "Washington", date_of_birth: "1954-12-28", place_of_birth: "Mount Vernon, USA", height: 185, rating: 9.6, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/jj2Gcobpopokal0YstuCQW0ldJ4.jpg" }
+  { name: "Denzel", surname: "Washington", date_of_birth: "1954-12-28", place_of_birth: "Mount Vernon, USA", height: 185, rating: 9.6, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/jj2Gcobpopokal0YstuCQW0ldJ4.jpg" },
+  {name: "Bryan", surname: "Cranston", date_of_birth: "1956-03-07", place_of_birth: "Hollywood, California, USA", height: 178, rating: 9.5, image_url: "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/aGSvZg7uITJveQtGHDcPNI6map1.jpg"}
 ]
 
 actors.each { |actor| Actor.find_or_create_by(actor) }
@@ -61,3 +62,29 @@ series = [
 ]
 
 series.each { |serie| Series.find_or_create_by(serie) }
+
+# Actor - movies
+actor_movies = [
+  { actor_id: Actor.find_by(name: "Leonardo", surname: "DiCaprio")&.id, movie_id: Movie.find_by(title: "Inception")&.id },
+  { actor_id: Actor.find_by(name: "Brad", surname: "Pitt")&.id, movie_id: Movie.find_by(title: "Fight Club")&.id },
+  { actor_id: Actor.find_by(name: "Tom", surname: "Hanks")&.id, movie_id: Movie.find_by(title: "Forrest Gump")&.id },
+]
+
+actor_movies.each do |actor_movie|
+  actor = Actor.find_by(id: actor_movie[:actor_id])
+  movie = Movie.find_by(id: actor_movie[:movie_id])
+  
+  actor.movies << movie unless actor.movies.include?(movie)
+end
+
+# Actor - series
+actor_series = [
+  { actor_id: Actor.find_by(name: "Bryan", surname: "Cranston")&.id, series_id: Series.find_by(title: "Breaking Bad")&.id },
+]
+
+actor_series.each do |actor_serie|
+  actor = Actor.find_by(id: actor_serie[:actor_id])
+  series = Series.find_by(id: actor_serie[:series_id])
+  
+  actor.series << series unless actor.series.include?(series)
+end

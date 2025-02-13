@@ -4,3 +4,11 @@ p style="color: green" = notice
 
 == render @series
 
+div.actorsContainer
+  ul.actorsList 
+    - @actors.each do |actor|
+      li 
+        =link_to actor do
+          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
+          h4 = actor.name + " " + actor.surname
+          p = actor.rating

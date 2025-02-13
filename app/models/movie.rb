@@ -8,6 +8,8 @@ class Movie < ApplicationRecord
   has_one_attached :my_file
   validates :image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "must be a valid URL" }, allow_blank: true
 
+  has_and_belongs_to_many :actors
+
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "length", "rating", "release_date", "title", "updated_at"]
   end
