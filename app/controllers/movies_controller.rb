@@ -68,6 +68,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.expect(movie: [ :title, :description, :rating, :release_date, :length, :category, :image_url ,:my_file ])
+      params.expect(movie: [ :title, :description, :rating, :release_date, :length, :category, :image_url ,:my_file, actor_ids: [] ])
     end
 end
