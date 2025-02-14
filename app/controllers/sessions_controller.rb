@@ -6,8 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate_by(params.permit(:email_address, :password))
+    user_params = params.permit(:email_address, :password)
+    logger.debug "User params: #{user_params.inspect}"
+
+    if user = User.authenticate_by(user_params)
       start_new_session_for user
+      logger.debug "Session after login: #{session[:user_id].inspect}"
       redirect_to after_authentication_url
     else
       redirect_to new_session_path, alert: "Try another email address or password."

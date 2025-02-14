@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root "home#index"
   resources :passwords, param: :token
   get "home/index"
-  resources :movies
+  resources :movies do
+    resources :comments, only: [:new, :create, :destroy]
+  end
   resources :series
   resources :actors
   resources :register, only: [:new, :create]

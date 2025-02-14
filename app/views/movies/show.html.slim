@@ -6,6 +6,7 @@ p style="color: green" = notice
 == render @movie
 
 div.actorsContainer
+  h3.actorsTitle Actors
   ul.actorsList 
     - @actors.each do |actor|
       li 
@@ -13,3 +14,17 @@ div.actorsContainer
           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
           h4 = actor.name + " " + actor.surname
           p = actor.rating
+
+div.commentsContainer
+  h3.commentsTitle = "Comments #{Comment.where(movie_id: @movie.id).count}" 
+  ul.commentsList
+    - @movie.comments.each do |comment|
+      li.commentsItem
+        p.commentsText = comment.content
+        p.commentsAuthor = "Author: #{comment.user.email_address}"
+        p.commentsCreatedAt = comment.created_at.strftime("%Y-%m-%d %H:%M")
+  = form_with(model:[@movie, Comment.new]) do |form|  
+    p
+      = form.text_area :content
+    p
+      = form.submit "Add comment"
