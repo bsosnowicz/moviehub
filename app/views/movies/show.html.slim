@@ -5,11 +5,13 @@ p style="color: green" = notice
 
 == render @movie
 
-div.actorsContainer
-  ul.actorsList 
+
+h3 Cast
+
+div.collectionCastContainer
+  ul.collectionCastList
     - @actors.each do |actor|
-      li 
+      li.collactionCastItem
         =link_to actor do
           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
           h4 = actor.name + " " + actor.surname
-          p = actor.rating

@@ -26,13 +26,9 @@
     = form.label :height, style: "display: block"
     = form.number_field :height
 
-  div id="actors"
-    - @actors_count.times do |index|
-      div class="actor-select" id="actor_#{index}"
-        = form.collection_select :actor_ids, Actor.all, :id, :name, { include_blank: true }, { class: 'form-control' }
-
   div
-    = link_to "Add Actor", new_movie_path(actor: true), class: 'btn btn-primary'
+    = form.label :rating, style: "display: block"
+    = form.text_field :rating
 
   div
     = form.file_field :my_file
