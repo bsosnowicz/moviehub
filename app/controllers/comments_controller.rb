@@ -1,25 +1,28 @@
 class CommentsController < ApplicationController
-  before_action :set_movie, only: [:create]
+  before_action :set_target, only: [:create]
 
   def create
-    logger.debug "Current user: #{current_user.inspect}" 
-    logger.debug "Movie: #{@movie.inspect}" # 🔍 Debugowanie czy @movie istnieje
 
-    @comment = @movie.comments.build(comment_params)
+    @comment = @target.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @movie, notice: "Comment added!"
+      redirect_to @target, notice: "Comment added!"
     else
-      redirect_to @movie, alert: "Comment not added!"
+      redirect_to @target, alert: "Comment not added!"
     end
   end
 
-
   private
 
-  def set_movie
-    @movie = Movie.find_by(id: params[:movie_id])
+  def set_target
+    if params[:movie_id]
+      @target = Movie.find_by(id: params[:movie_id])
+    elsif params[:series_id]
+      @target = Series.find_by(id: params[:series_id])
+    elsif params[:actor_id]
+      @target = Actor.find_by(id: params[:actor_id])
+    end
   end
 
   def comment_params

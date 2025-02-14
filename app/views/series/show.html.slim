@@ -12,3 +12,19 @@ div.actorsContainer
           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
           h4 = actor.name + " " + actor.surname
           p = actor.rating
+
+div.commentsContainer
+  h3.commentsTitle = "Comments #{Comment.where(series_id: @series.id).count}" 
+  ul.commentsItemList
+    - @series.comments.each do |comment|
+      li.commentsItem
+        div.commentsUserContainer
+          = image_tag "/images/user.png", class:"userAvatar"
+          p.commentsAuthor = comment.user.email_address
+        div.commentsText = comment.content
+        p.commentsCreatedAt = comment.created_at.strftime("%Y-%m-%d %H:%M")
+  = form_with(model:[@series, Comment.new]) do |form|  
+    p
+      = form.text_area :content, class:"commentsTextArea"
+    p
+      = form.submit "Add comment", class:"addNewButton"

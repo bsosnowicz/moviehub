@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :movies do
     resources :comments, only: [:new, :create, :destroy]
   end
-  resources :series
-  resources :actors
+  resources :series do
+    resources :comments, only: [:new, :create, :destroy]
+  end
+  resources :actors do
+    resources :comments, only: [:new, :create, :destroy]
+  end
   resources :register, only: [:new, :create]
   resource :session
 

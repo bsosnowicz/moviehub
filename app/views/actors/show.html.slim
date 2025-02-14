@@ -3,3 +3,19 @@ p style="color: green" = notice
 =< link_to "Back to actors", actors_path, class:"backButton"
   
 == render @actor
+
+div.commentsContainer
+  h3.commentsTitle = "Comments #{Comment.where(actor_id: @actor.id).count}" 
+  ul.commentsItemList
+    - @actor.comments.each do |comment|
+      li.commentsItem
+        div.commentsUserContainer
+          = image_tag "/images/user.png", class:"userAvatar"
+          p.commentsAuthor = comment.user.email_address
+        div.commentsText = comment.content
+        p.commentsCreatedAt = comment.created_at.strftime("%Y-%m-%d %H:%M")
+  = form_with(model:[@actor, Comment.new]) do |form|  
+    p
+      = form.text_area :content, class:"commentsTextArea"
+    p
+      = form.submit "Add comment", class:"addNewButton"

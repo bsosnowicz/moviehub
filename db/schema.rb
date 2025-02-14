@@ -66,10 +66,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_153224) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
-    t.integer "movie_id", null: false
+    t.integer "movie_id"
+    t.integer "series_id"
+    t.integer "actor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_comments_on_actor_id"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
+    t.index ["series_id"], name: "index_comments_on_series_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -116,7 +120,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_153224) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "actors"
   add_foreign_key "comments", "movies"
+  add_foreign_key "comments", "series"
   add_foreign_key "comments", "users"
   add_foreign_key "sessions", "users"
 end

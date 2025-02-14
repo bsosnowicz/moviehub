@@ -6,6 +6,7 @@ class Series < ApplicationRecord
   validates :no_of_seasons, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than: 50 }
   validates :category, presence: true
   has_one_attached :my_file
+  has_many :comments, dependent: :destroy
   validates :image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "must be a valid URL" }, allow_blank: true
   def self.ransackable_attributes(auth_object = nil)
     ["title", "rating", "release_date"]
