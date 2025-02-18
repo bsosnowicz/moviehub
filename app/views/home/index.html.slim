@@ -1,44 +1,43 @@
 = stylesheet_link_tag 'home', media: 'css'
 div.trendingContainer
 
-  h3 = "Trending #{@category.capitalize}"
-
-  div.categoriesMenu
-   = link_to "Movies", root_path(category: "movies", unreleased_category: @unreleased_category), class:"unstyledButton"
-   = link_to "Series", root_path(category: "series", unreleased_category: @unreleased_category), class:"unstyledButton"
-
-  ul.trendingList
-    - @items.each do |item|
+  h3.headerTitle = "What to watch"
+  h4.headerSubline = "Top picks"
+  p.headerSubheading = "TV shows and movies just for you"
+  ul.homeItemsList
+    - @movies.each do |movie|
       li
-        =link_to item do
-          = image_tag item.my_file.attached? ? url_for(item.my_file) : item.image_url, class:"thumbnail"
-          h4 = item.respond_to?(:title) ? item.title : "#{item.name} #{item.surname}"
-          p Rating: #{item.rating}
-          - if item.respond_to?(:release_date)
-            p Release date: #{item.release_date}  
+        =link_to movie do
+          = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"homeItemThumbnail"
+          div.homeItemDescription
+            h4.homeItemTitle = movie.title
+            div.homeItemDetails
+              span.homeItemRating #{movie.rating}
+              = "•"
+              span.homeItemCategory #{movie.category}
 
-div.unreleasedContainer
+/ div.unreleasedContainer
 
-  h3 = "Unreleased #{@unreleased_category.capitalize}"
+/   h3 = "Unreleased #{@unreleased_category.capitalize}"
   
-  div.categoriesMenu
-    =link_to "Movies", root_path(category: @category, unreleased_category: "movies"), class:"unstyledButton"
-    =link_to "Series", root_path(category: @category, unreleased_category: "series"), class:"unstyledButton"
+/   div.categoriesMenu
+/     =link_to "Movies", root_path(category: @category, unreleased_category: "movies"), class:"unstyledButton"
+/     =link_to "Series", root_path(category: @category, unreleased_category: "series"), class:"unstyledButton"
 
 
-  ul.unreleasedList
-    - @unreleased_items.each do |item|
-      li
-        = link_to item do
-          = image_tag item.my_file.attached? ? url_for(item.my_file) : item.image_url, class:"thumbnail"
-          h4 = item.title
-          p Release date: #{item.release_date}
+/   ul.unreleasedList
+/     - @unreleased_movies.each do |movie|
+/       li
+/         = link_to movie do
+/           = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"thumbnail"
+/           h4 = movie.title
+/           p Release date: #{movie.release_date}
 
-div.actorsContainer
-  ul.actorsList 
-    - @actors_items.each do |actor|
-      li 
-        =link_to actor do
-          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
-          h4 = actor.name + " " + actor.surname
-          p = actor.rating
+/ div.actorsContainer
+/   ul.actorsList 
+/     - @actors_movies.each do |actor|
+/       li 
+/         =link_to actor do
+/           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
+/           h4 = actor.name + " " + actor.surname
+/           p = actor.rating
