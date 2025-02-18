@@ -7,7 +7,16 @@
 }
 
 .logo {
-  width: 132px;
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+  gap: 8px;
+}
+
+.logoText{
+  color: var(--secondary-color);
+  font-size: 26px;
+  line-height: 26px;
 }
 
 .itemList {
@@ -68,6 +77,7 @@
   left: 0;
   background-color: var(--primary-color);
   display: block;
+  z-index: 999;
 }
 
 .menuClose {

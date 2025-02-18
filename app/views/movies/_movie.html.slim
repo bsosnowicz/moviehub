@@ -1,27 +1,34 @@
 = stylesheet_link_tag 'collection_item', media: 'css'
 
-div id="#{dom_id movie}"
+div.collectionItem id="#{dom_id(movie)}"
   div.collectionItemContainer
-    = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionItemThumbnail"
+    = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class: "collectionItemThumbnail"
     div.collectionItemTextContainer
-      p.collectionItemTitle
-        =< movie.title.upcase
-      div.collectionItemData
-        p.collectionItemRating
-          strong Rating:
-          =< "#{movie.rating} / 10.0"
-        p.collectionItemDate
-          strong Release date:
-          =< movie.release_date
-        p.collectionItemLength
-          strong Length:
-          =< "#{movie.length} min"
-        p.collectionItemCategory
-          strong Category:
-          =< movie.category
-      p.collectionItemDescription
-        strong Description:
-        =< movie.description   
-      div.collectionItemButtonContainer
-        => link_to "Edit this movie", edit_movie_path(@movie), class:"collectionItemEditButton" if authenticated?
-        = button_to "Delete this movie", @movie, method: :delete, class:"collectionItemDeleteButton"  if authenticated?
+      h4.collectionItemTitle
+        = movie.title.upcase
+      div.collectionItemText
+        div.collectionItemText--left
+          div.collectionItemCategoryContainer
+            p.collectionItemCategory
+              = movie.category
+            p.collectionItemCategory
+              = movie.category
+            p.collectionItemCategory
+              = movie.category
+          div.collectionItemData
+            p.collectionItemRating
+              = image_tag "star.svg", class: "collectionItemStar"
+              = movie.rating
+            p.collectionItemDescription
+              = movie.description
+          div.collectionItemButtonContainer
+            = link_to "EDIT THIS MOVIE", edit_movie_path(@movie), class: "collectionItemButton" if authenticated?
+            = button_to "DELETE THIS MOVIE", @movie, method: :delete, class: "collectionItemButton--secondary" if authenticated?
+        div.collectionItemText--right
+          h5.collectionItemTextHeader Release Date
+          p.collectionItemRight = movie.release_date
+          h5.collectionItemTextHeader Length
+          p.collectionItemRight = "#{movie.length} min"
+          h5.collectionItemTextHeader Director
+          p.collectionItemRight = "Quentin Tarantino"
+            

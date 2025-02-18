@@ -1,39 +1,90 @@
-.collectionItemContainer {
-  margin-top: 20px;
+.collectionItem {
   display: flex;
   gap: 30px;
+  height: calc(100vh - 64px);
+  align-items: center;
+  width: 100%;
+}
+
+.collectionItemContainer{
+  height: 80%;
+  display: flex;
+  gap: 64px;
 }
 
 .collectionItemThumbnail {
   width: 480px;
-  border-radius: 5px;
-  height: 720px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .collectionItemTitle {
-  font-size: 32px;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 64px;
+}
+
+.collectionItemCategoryContainer{
+  display: flex;
+  gap: 8px;
+}
+
+.collectionItemCategory{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--secondary-color);
+  padding: 4px 12px;
+  border-radius: 16px;
 }
 
 .collectionItemTextContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
+
+}
+
+.collectionItemText{
+  display:flex;
+  height: 100%;
+  gap: 32px;
+}
+
+.collectionItemText--left{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  gap: 36px;
+}
+
+.collectionItemText--right{
+width: 35%;
+display: flex;
+flex-direction: column;
+}
+
+.collectionItemText--right p{
+  border-top: 1px solid #fafafa32 ;
+  padding-top: 8px;
+  }
+
+.collectionItemTextHeader{
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--theme-color);
 }
 
 .collectionItemData {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: inherit;
 }
 
-.collectionItemRating,
-.collectionItemDate,
-.collectionItemLength,
-.collectionItemCategory,
-.collectionItemHeight {
-  width: 300px;
-  display: flex;
-  justify-content: space-between;
+.collectionItemRight{
+  margin-bottom: 26px;
 }
 
 .collectionItemButtonContainer {
@@ -41,22 +92,18 @@
   gap: 15px;
 }
 
-.collectionItemDeleteButton,
-.collectionItemEditButton {
-  padding: 14px;
-  color: var(--secondary-color);
-  border-radius: 5px;
-  font-size: 14px;
+.collectionItemRating{
+  vertical-align: center;
+  display: flex;
+  gap: 12px;
+  font-size: 24px;
 }
 
-.collectionItemEditButton {
+.collectionItemStar{
+  width: 24px;
   background-color: var(--theme-color);
-}
-
-.collectionItemDeleteButton {
-  background-color: transparent;
-  border: 1px solid var(--secondary-color);
-  cursor: pointer;
+  padding: 2px;
+  border-radius: 4px;
 }
 
 .backButton{

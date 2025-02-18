@@ -1,12 +1,13 @@
 :root {
   --primary-color: black;
   --secondary-color: white;
-  --theme-color: #ffc200;
+  --theme-color: #1b52dd ;
   --section-color: #f8f8f8;
 }
 
 body {
-  background-color: var(--primary-color);
+  background: linear-gradient(0deg, #091c4b 0%, #000614 60%);
+  background-size: cover;
   color: var(--secondary-color);
 }
 

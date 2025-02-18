@@ -7,3 +7,24 @@
     background-color: #242424;
     border-radius: 4px;
 }
+
+.collectionItemButton,
+.collectionItemButton--secondary {
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing:0.75px;
+}
+
+.collectionItemButton {
+  color: var(--secondary-color);
+  background-color: var(--theme-color);
+}
+
+.collectionItemButton--secondary {
+  color: var(--theme-color);
+  background-color: transparent;
+  border: 1px solid var(--theme-color);
+  cursor: pointer;
+}
