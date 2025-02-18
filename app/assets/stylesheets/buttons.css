@@ -1,0 +1,9 @@
+.buttonHomeWatchlist{
+    width: 100%;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+    color: var(--secondary-color);
+    background-color: #242424;
+    border-radius: 4px;
+}

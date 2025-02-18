@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @q = Movie.ransack(params[:q])
-    @movies = @q.result.order(rating: :desc).limit(4)
+   @movies = Movie.order(rating: :desc).limit(4)
+   @series = Series.order(rating: :desc).limit(4)
+   @actors = Actor.order(rating: :desc).limit(5)
   end
 end

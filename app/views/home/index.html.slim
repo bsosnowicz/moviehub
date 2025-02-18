@@ -6,7 +6,7 @@ div.trendingContainer
   p.headerSubheading = "TV shows and movies just for you"
   ul.homeItemsList
     - @movies.each do |movie|
-      li
+      li.homeItem
         =link_to movie do
           = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"homeItemThumbnail"
           div.homeItemDescription
@@ -15,6 +15,31 @@ div.trendingContainer
               span.homeItemRating #{movie.rating}
               = "•"
               span.homeItemCategory #{movie.category}
+        = button_to "Add to watchlist",@movie , class:"buttonHomeWatchlist"
+
+  h4.headerSubline = "Fan favorites"
+  p.headerSubheading = "Trending shows you can't miss"
+  ul.homeItemsList
+    - @series.each do |serie|
+      li.homeItem
+        =link_to serie do
+          = image_tag serie.my_file.attached? ? url_for(serie.my_file) : serie.image_url, class:"homeItemThumbnail"
+          div.homeItemDescription
+            h4.homeItemTitle = serie.title
+            div.homeItemDetails
+              span.homeItemRating #{serie.rating}
+              = "•"
+              span.homeItemCategory #{serie.category}
+        = button_to "Add to watchlist",@serie , class:"buttonHomeWatchlist"
+h4.headerSubline = "Best rated celebrities"
+div.actorsContainer
+  ul.actorsList 
+    - @actors.each do |actor|
+      li 
+        =link_to actor do
+          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
+          span = actor.name + " " + actor.surname
+          p = actor.rating
 
 / div.unreleasedContainer
 
@@ -22,7 +47,7 @@ div.trendingContainer
   
 /   div.categoriesMenu
 /     =link_to "Movies", root_path(category: @category, unreleased_category: "movies"), class:"unstyledButton"
-/     =link_to "Series", root_path(category: @category, unreleased_category: "series"), class:"unstyledButton"
+/     =link_to "serie", root_path(category: @category, unreleased_category: "serie"), class:"unstyledButton"
 
 
 /   ul.unreleasedList
@@ -32,12 +57,3 @@ div.trendingContainer
 /           = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"thumbnail"
 /           h4 = movie.title
 /           p Release date: #{movie.release_date}
-
-/ div.actorsContainer
-/   ul.actorsList 
-/     - @actors_movies.each do |actor|
-/       li 
-/         =link_to actor do
-/           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
-/           h4 = actor.name + " " + actor.surname
-/           p = actor.rating
