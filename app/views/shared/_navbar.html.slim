@@ -9,7 +9,7 @@ nav.navbar
             li = link_to "Series", series_index_path, class:"unstyledButton"
             li = link_to "Actors", actors_path, class:"unstyledButton"
             = image_tag 'close.svg', class: 'menuClose', id:'close-menu'
-    input.searchBar placeholder="Search MovieHub"
+    = render "search/form"
     - if authenticated?
         / li = link_to 'Profile', profile_path
         p Watchlist

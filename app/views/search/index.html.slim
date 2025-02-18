@@ -1,0 +1,25 @@
+h4  Found #{@movies.count + @series.count + @actors.count} items
+
+div.searchContainer
+   ul.collectionList
+    - @movies.each do |movie|
+      li
+        = link_to movie_path(movie) do
+          .collectionItem
+            = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionThumbnail"
+            h4.collectionTitle = movie.title
+            p.collectionCategory = "#{movie.category} | #{movie.release_date}"
+    - @series.each do |serie|
+      li
+        = link_to series_path(serie) do
+          .collectionItem
+            = image_tag serie.my_file.attached? ? url_for(serie.my_file) : serie.image_url, class:"collectionThumbnail"
+            h4.collectionTitle = serie.title
+            p.collectionCategory = "#{serie.category} | #{serie.release_date}"
+    - @actors.each do |actor|
+      li 
+        = link_to actor_path(actor) do
+          .collectionItem
+            = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"collectionThumbnail"
+            h4.collectionTitle = "#{actor.name} #{actor.surname}"
+            p.collectionRating = "#{actor.rating} / 10" 

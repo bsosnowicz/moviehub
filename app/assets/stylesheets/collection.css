@@ -12,6 +12,11 @@
   flex: 0 0 calc(33.3333% - 30px);
 }
 
+.collectionList li a{
+  width: 100%;
+  height: 100%;
+}
+
 .collectionThumbnail {
   width: 100%;
   height: 560px;

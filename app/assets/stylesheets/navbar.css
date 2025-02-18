@@ -21,6 +21,20 @@
   padding: 0 6px 0 6px;
 }
 
+.searchButton{
+  height: 22px;
+  background-color: white;
+  margin-left: -28px;
+  border: none;
+  cursor: pointer;
+  border-left: 1px solid #cacaca;
+  padding: 0 6px;
+}
+
+.searchButton img{
+  height: 14px;
+}
+
 .buttonLogout {
   background-color: transparent;
 }
