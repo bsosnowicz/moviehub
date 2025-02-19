@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :register, only: [:new, :create]
   resource :session
   
+  get "comments", to: "comments#index"
   get "search", to: "search#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

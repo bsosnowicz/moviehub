@@ -1,3 +1,55 @@
+.homeFlexboxThumbnail{
+  width: 100vw;
+  height: 100vh;
+}
+
+.homeFlexboxItem{
+  width: 100vw;
+  z-index: -1;
+  height: 100vh;
+  box-sizing: border-box;
+
+
+}
+
+.homeFlexboxList{
+display: flex;
+overflow: hidden;
+z-index: -20;
+}
+
+
+.homeFlexboxDescription{
+  background-color: var(--section-shadow);
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 32px 64px;
+  box-sizing: border-box;
+}
+
+.homeFlexboxTitle{
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 48px;
+}
+
+.homeFlexboxDetails{
+  display: flex;
+  gap: 8px;
+}
+
+.homeFlexboxDetails span{
+  color: var(--font-color);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 4px 12px;
+  background-color: var(--font-secondary);
+  border-radius:100px ;
+}
 
 .homeItemsList {
   list-style: none;
@@ -9,6 +61,7 @@
 .homeItemsList li{
   border-radius: 4px;
   position: relative;
+  width: calc(100%/4);
 }
 
 /* .homeItemsList li::after {
@@ -24,11 +77,11 @@
 } */
 
 .homeItemThumbnail{
-  width: 302px;
   height: 380px;
   border-radius: 4px;
   display: block;
   z-index: 0; 
+  width: 100%;
 }
 
 
@@ -77,9 +130,6 @@
   gap: 8px;
   z-index: 2; 
   padding-bottom: 4px;
-}
-.actorsContainer {
-  margin-top: 20px;
 }
 
 .actorsList {

@@ -1,12 +1,13 @@
 :root {
-  --primary-color: black;
-  --secondary-color: white;
-  --theme-color: #1b52dd ;
+  --font-color: #EFEFEF;
+  --font-secondary:#050B18;
+  --theme-color: #1c5af8 ;
   --section-color: #f8f8f8;
+  --section-shadow:hsla(240, 10%, 6%, 0.5);
 }
 
 body {
-  background: linear-gradient(0deg, #091c4b 0%, #000614 60%);
+  background: linear-gradient(180deg, rgba(0, 8, 26, 0.95) 0%, #0E0E11 100%);
   background-size: cover;
   color: var(--secondary-color);
 }
@@ -16,18 +17,13 @@ body {
   margin: 0 auto;
 }
 
-.unstyledButton {
-  all: unset;
-  cursor: pointer;
-  display: inline-block;
-}
-
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", serif;
+  font-family: "Manrope", serif;
 }
 
 a {
   text-decoration: none;
+  color: var(--font-color);
 }

@@ -1,15 +1,15 @@
 = stylesheet_link_tag 'collection', media: 'css'
 
 p style="color: green" = notice
-
-ul.collectionList
-  - @movies.each do |movie|
-    li
-      = link_to movie_path(movie) do
-        .collectionItem
-          = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionThumbnail"
-          h4.collectionTitle = movie.title
-          p.collectionCategory = "#{movie.category} | #{movie.release_date}"
-
-button.addNewButton = link_to "+ Add new movie", new_movie_path
-= paginate @movies
+.container
+  ul.collectionList
+    - @movies.each do |movie|
+      li
+        = link_to movie_path(movie) do
+          .collectionItem
+            = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionThumbnail"
+            h4.collectionTitle = movie.title
+            p.collectionCategory = "#{movie.category} | #{movie.release_date}"
+  
+  button.addNewButton = link_to "+ Add new movie", new_movie_path
+  = paginate @movies

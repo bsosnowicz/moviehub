@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'collection_item', media: 'css'
 
-div.collectionItem id="#{dom_id(movie)}"
+div.collectionItemSection id="#{dom_id(movie)}"
   div.collectionItemContainer
     = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class: "collectionItemThumbnail"
     div.collectionItemTextContainer

@@ -1,0 +1,7 @@
+= form_with(model: [@movie, Comment.new], data: { turbo: true }) do |form|
+    p
+      = form.text_area :content, class:"commentsTextArea"
+    p
+      = form.submit "Add comment", class:"addNewButton"
+
+end

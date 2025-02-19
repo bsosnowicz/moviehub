@@ -2,31 +2,33 @@ p style="color: green" = notice
 
 / =< link_to "Back to movies", movies_path, class:"backButton"
 
+.container
+  == render @movie
+  
+  div.actorsContainer
+    h3.headerSubline Actors
+    ul.actorsList 
+      - @actors.each do |actor|
+        li 
+          =link_to actor do
+            = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
+            span = actor.name + " " + actor.surname
+            p = actor.rating
 
-== render @movie
+  = render 'comments/index', locals: { movie: @movie }
 
-div.actorsContainer
-  h3.actorsTitle Actors
-  ul.actorsList 
-    - @actors.each do |actor|
-      li 
-        =link_to actor do
-          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
-          h4 = actor.name + " " + actor.surname
-          p = actor.rating
-
-div.commentsContainer
-  h3.commentsTitle = "Comments #{Comment.where(movie_id: @movie.id).count}" 
-  ul.commentsItemList
-    - @movie.comments.each do |comment|
-      li.commentsItem
-        div.commentsUserContainer
-          = image_tag "/images/user.png", class:"userAvatar"
-          p.commentsAuthor = comment.user.email_address
-        div.commentsText = comment.content
-        p.commentsCreatedAt = comment.created_at.strftime("%Y-%m-%d %H:%M")
-  = form_with(model:[@movie, Comment.new]) do |form|  
-    p
-      = form.text_area :content, class:"commentsTextArea"
-    p
-      = form.submit "Add comment", class:"addNewButton"
+  / div.commentsContainer
+  /   h3.headerSubline = "Comments #{Comment.where(movie_id: @movie.id).count}" 
+  /   ul.commentsItemList
+  /     - @movie.comments.each do |comment|
+  /       li.commentsItem
+  /         div.commentsUserContainer
+  /           = image_tag "/images/user.png", class:"userAvatar"
+  /           p.commentsAuthor = comment.user.email_address
+  /         div.commentsText = comment.content
+  /         p.commentsCreatedAt = comment.created_at.strftime("%Y-%m-%d %H:%M")
+  /   = form_with(model:[@movie, Comment.new]) do |form|  
+  /     p
+  /       = form.text_area :content, class:"commentsTextArea"
+  /     p
+  /       = form.submit "Add comment", class:"addNewButton"

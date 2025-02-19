@@ -1,6 +1,17 @@
 = stylesheet_link_tag 'home', media: 'css'
-div.trendingContainer
-
+div.homeFlexbox
+  ul.homeFlexboxList
+    - @singleMovie.each do |movie|
+      li.homeFlexboxItem
+        =link_to movie do
+          = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"homeFlexboxThumbnail"
+          div.homeFlexboxDescription
+            h4.homeFlexboxTitle = movie.title
+            div.homeFlexboxDetails
+              span.homeFlexboxCategory #{movie.category}
+              span.homeFlexboxRating #{movie.rating}
+              
+div.trendingContainer.container
   h3.headerTitle = "What to watch"
   h4.headerSubline = "Top picks"
   p.headerSubheading = "TV shows and movies just for you"
@@ -31,8 +42,8 @@ div.trendingContainer
               = "•"
               span.homeItemCategory #{serie.category}
         = button_to "Add to watchlist",@serie , class:"buttonHomeWatchlist"
-h4.headerSubline = "Best rated celebrities"
-div.actorsContainer
+div.actorsContainer.container
+  h4.headerSubline = "Best rated celebrities"
   ul.actorsList 
     - @actors.each do |actor|
       li 

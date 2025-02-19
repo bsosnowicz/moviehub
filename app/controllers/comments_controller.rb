@@ -1,17 +1,25 @@
 class CommentsController < ApplicationController
   before_action :set_target, only: [:create]
 
-  def create
+  def index
+    @comments = @movie.comments
+  end
 
+  def create
     @comment = @target.comments.build(comment_params)
     @comment.user = current_user
+    Rails.logger.debug "User current: #{current_user.inspect}"
 
-    if @comment.save
-      redirect_to @target, notice: "Comment added!"
-    else
-      redirect_to @target, alert: "Comment not added!"
+    respond_to do |format|
+      if @comment.save
+        format.turbo_stream
+        format.html { redirect_to @target, notice: "Comment added!" }
+      else
+        format.html { redirect_to @target, alert: "Comment not added!" }
+      end
     end
   end
+  
 
   private
 
