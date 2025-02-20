@@ -1,11 +1,11 @@
-= turbo_stream_from "comments_#{@movie.id}"
+/ = turbo_stream_from "comments_#{@movie.id}"
 
-div.commentsContainer
-  h3.headerSubline
-    | Comments #{Comment.where(movie_id: @movie.id).count}
+/ div.commentsContainer
+/   h3.headerSubline
+/     | Comments #{Comment.where(movie_id: @movie.id).count}
 
-  ul.commentsItemList id="comments_list"
-    - @movie.comments.each do |comment|
-      = render comment
+/   ul.commentsItemList id="comments_list"
+/     - @movie.comments.each do |comment|
+/       = render comment
 
-  = render "comments/form", movie: @movie
+/   = render "comments/form", movie: @movie

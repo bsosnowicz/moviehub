@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @comment.save
-        # Rails.logger.debug "Comment params: #{comment_params.inspect}"
+        logger.debug "Params received: #{params.inspect}"
         format.turbo_stream
         format.html { redirect_to @target, notice: "Comment added!" }
       else
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
-    # params.require(:comment).permit(:content, :rating)
+    # params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :rating)
   end
 end

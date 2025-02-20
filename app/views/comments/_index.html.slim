@@ -5,4 +5,4 @@ div.commentsContainer
   ul.commentsItemList id="comments_list"
     - @movie.comments.each do |comment|
       = render comment
-  = render "/comments/form", movie: @movie
+  = render 'comments/form', comment: Comment.new, movie: @movie
