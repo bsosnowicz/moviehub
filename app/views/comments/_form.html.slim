@@ -1,4 +1,7 @@
 = form_with(model: [@movie, Comment.new], data: { turbo: true }) do |form|
+    / p 
+    /   = form.label :rating, style: "display: block"
+    /   = form.number_field :rating
     p
       = form.text_area :content, class:"commentsTextArea"
     p

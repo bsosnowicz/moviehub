@@ -9,9 +9,10 @@ class CommentsController < ApplicationController
     @comment = @target.comments.build(comment_params)
     @comment.user = current_user
     Rails.logger.debug "User current: #{current_user.inspect}"
-
+    
     respond_to do |format|
       if @comment.save
+        # Rails.logger.debug "Comment params: #{comment_params.inspect}"
         format.turbo_stream
         format.html { redirect_to @target, notice: "Comment added!" }
       else
@@ -35,5 +36,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+    # params.require(:comment).permit(:content, :rating)
   end
 end
