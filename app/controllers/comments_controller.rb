@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @comment.save
-        logger.debug "Params received: #{params.inspect}"
+        update_movie_rating
         format.turbo_stream
         format.html { redirect_to @target, notice: "Comment added!" }
       else
@@ -34,8 +34,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update_movie_rating
+    @movie = @target
+    if @movie.rating.nil?
+      @movie.rating = @comment.rating
+    else
+      
+      @movie.rating = (@movie.rating.to_f + @comment.rating) / 2
+    end
+    @movie.save
+  end
+
   def comment_params
-    # params.require(:comment).permit(:content)
     params.require(:comment).permit(:content, :rating)
   end
 end

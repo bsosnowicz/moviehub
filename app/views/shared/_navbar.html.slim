@@ -11,15 +11,7 @@ nav.navbar
         li = link_to "Movies", movies_path, class:"navbarLink"
         li = link_to "TV series", series_index_path, class:"navbarLink"
         li = link_to "Actors", actors_path, class:"navbarLink"
-    / = image_tag 'menu.svg', class: 'menuButton', id: "menu-toggle"
-    / div.menu#menu.menuHidden
-    /     ul.menuItemList
-    /         li = link_to "Home", root_path, class:"navbarLink"
-    /         li = link_to "Movies", movies_path, class:"navbarLink"
-    /         li = link_to "Series", series_index_path, class:"navbarLink"
-    /         li = link_to "Actors", actors_path, class:"navbarLink"
-    /         = image_tag 'close.svg', class: 'menuClose', id:'close-menu'
-    / = render "search/form"
+    = render "search/form"
     div.navbarButtons
         - if authenticated?
             / li = link_to 'Profile', profile_path

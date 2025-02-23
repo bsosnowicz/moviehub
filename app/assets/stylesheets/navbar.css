@@ -72,6 +72,43 @@
   height: 14px;
 }
 
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+.suggestions-list li {
+  padding: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background-color: grey;
+  display: flex;
+  gap: 16px;
+}
+
+.suggestions-list li img{
+  width: 48px;
+  border-radius: 16px;
+}
+
+.suggestions-list li:hover {
+  background: #f0f0f0;
+}
+
+.suggestionTrailerContainer{
+ display: flex;
+ gap: 16px; 
+ background: grey;
+}
+
+.suggestionTrailer{
+  width: 50%;
+  height:200px;
+  border-radius: 16px;
+  size: cover;
+}
+
 .buttonLogout {
   background-color: transparent;
 }
