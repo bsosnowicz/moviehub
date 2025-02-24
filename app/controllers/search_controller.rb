@@ -14,9 +14,9 @@ class SearchController < ApplicationController
   def suggestions
     query = "%#{params[:q].downcase}%"
 
-    @movies = Movie.where("LOWER(title) LIKE ?", query)
-    @series = Series.where("LOWER(title) LIKE ?", query)
-    @actors = Actor.where("LOWER(name) LIKE ? OR LOWER(surname) LIKE ?", query, query)
+    @movies = Movie.where("LOWER(title) LIKE ?", query).distinct
+    @series = Series.where("LOWER(title) LIKE ?", query).distinct
+    @actors = Actor.where("LOWER(name) LIKE ? OR LOWER(surname) LIKE ?", query, query).distinct
 
     render "search/suggestions", locals: { movies: @movies, series: @series, actors: @actors }
   end

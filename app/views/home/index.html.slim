@@ -4,7 +4,7 @@ div.homeFlexbox
     - @singleMovie.each do |movie|
       li.homeFlexboxItem
         =link_to movie do
-          = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"homeFlexboxThumbnail"
+          iframe.homeFlexboxThumbnail src="https://www.youtube.com/embed/#{movie.trailer_url}?autoplay=1&amp;mute=1&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1" frameborder="0" allowfullscreen
           div.homeFlexboxDescription
             h4.homeFlexboxTitle = movie.title
             div.homeFlexboxDetails

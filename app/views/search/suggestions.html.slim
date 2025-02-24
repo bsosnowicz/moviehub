@@ -16,7 +16,7 @@
           p = "Series: #{item.series.map(&:title).join(', ')}"
     - if index < 2
       div.suggestionTrailerContainer
-        img.suggestionTrailer src=item.image_url
-        img.suggestionTrailer src=item.image_url
+        iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
+        iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
 - else
   li No matches

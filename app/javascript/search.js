@@ -2,7 +2,7 @@ document.addEventListener("turbo:load", function () {
     const searchField = document.querySelector(".searchBar");
     const suggestionsList = document.getElementById("suggestionsList");
 
-    searchField.addEventListener("keyup", function () {
+    searchField.addEventListener("input", function () {
         const query = searchField.value.trim();
         if (query.length > 0) {
             fetch(`/suggestions?q=${query}`, {
@@ -19,7 +19,7 @@ document.addEventListener("turbo:load", function () {
             .catch(error => {
                 console.error('Error fetching suggestions:', error);
             });
-        } else {
+        } else if (query.length === 0) {
             suggestionsList.style.display = "none"; 
         }
     });
