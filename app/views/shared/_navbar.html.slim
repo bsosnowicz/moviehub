@@ -15,6 +15,7 @@ nav.navbar
     div.navbarButtons
         - if authenticated?
             / li = link_to 'Profile', profile_path
+            li#searchButton.navbarSearch = image_tag 'search.svg'
             li.buttonLogout = button_to 'Logout', session_path, method: :delete, class:"navbarLink"
         - else
             li = link_to 'Login', new_session_path

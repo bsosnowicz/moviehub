@@ -12,9 +12,7 @@ div.homeFlexbox
               span.homeFlexboxRating #{movie.rating}
               
 div.trendingContainer.container
-  h3.headerTitle = "What to watch"
-  h4.headerSubline = "Top picks"
-  p.headerSubheading = "TV shows and movies just for you"
+  h3.headerTitle = "Just to watch"
   ul.homeItemsList
     - @movies.each do |movie|
       li.homeItem
@@ -24,12 +22,9 @@ div.trendingContainer.container
             h4.homeItemTitle = movie.title
             div.homeItemDetails
               span.homeItemRating #{movie.rating}
-              = "•"
               span.homeItemCategory #{movie.category}
-        = button_to "Add to watchlist",@movie , class:"buttonHomeWatchlist"
 
-  h4.headerSubline = "Fan favorites"
-  p.headerSubheading = "Trending shows you can't miss"
+  h3.headerTitle = "Trending now"
   ul.homeItemsList
     - @series.each do |serie|
       li.homeItem
@@ -39,11 +34,9 @@ div.trendingContainer.container
             h4.homeItemTitle = serie.title
             div.homeItemDetails
               span.homeItemRating #{serie.rating}
-              = "•"
               span.homeItemCategory #{serie.category}
-        = button_to "Add to watchlist",@serie , class:"buttonHomeWatchlist"
 div.actorsContainer.container
-  h4.headerSubline = "Best rated celebrities"
+  h4.headerTitle = "Best rated celebrities"
   ul.actorsList 
     - @actors.each do |actor|
       li 
@@ -51,20 +44,3 @@ div.actorsContainer.container
           = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"actorThumbnail"
           span = actor.name + " " + actor.surname
           p = actor.rating
-
-/ div.unreleasedContainer
-
-/   h3 = "Unreleased #{@unreleased_category.capitalize}"
-  
-/   div.categoriesMenu
-/     =link_to "Movies", root_path(category: @category, unreleased_category: "movies"), class:"unstyledButton"
-/     =link_to "serie", root_path(category: @category, unreleased_category: "serie"), class:"unstyledButton"
-
-
-/   ul.unreleasedList
-/     - @unreleased_movies.each do |movie|
-/       li
-/         = link_to movie do
-/           = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"thumbnail"
-/           h4 = movie.title
-/           p Release date: #{movie.release_date}

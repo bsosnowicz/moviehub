@@ -4,19 +4,21 @@
   - remaining_results = all_results.drop(2)
 
   - all_results.each_with_index do |item, index|
-    li.suggestion-item
-      img.suggestion-img src=item.image_url
-      .suggestionText
-        h5 = item.is_a?(Actor) ? "#{item.name} #{item.surname}" : item.title
-        - if item.is_a?(Movie) || item.is_a?(Series)
-          p = "(#{item.release_date.strftime('%Y')})"
-          p = "Actors: #{item.actors.map { |a| "#{a.name} #{a.surname}" }.join(', ')}"
-        - elsif item.is_a?(Actor)
-          p = "Movies: #{item.movies.map(&:title).join(', ')}"
-          p = "Series: #{item.series.map(&:title).join(', ')}"
-    - if index < 2
-      div.suggestionTrailerContainer
-        iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
-        iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
+  
+    li.suggestionItem
+      div.suggestionsContainer
+        img.suggestion-img src=item.image_url
+        .suggestionsText
+          h5 = item.is_a?(Actor) ? "#{item.name} #{item.surname}" : item.title
+          - if item.is_a?(Movie) || item.is_a?(Series)
+            p = "(#{item.release_date.strftime('%Y')})"
+            p = "Actors: #{item.actors.map { |a| "#{a.name} #{a.surname}" }.join(', ')}"
+          - elsif item.is_a?(Actor)
+            p = "Movies: #{item.movies.map(&:title).join(', ')}"
+            p = "Series: #{item.series.map(&:title).join(', ')}"
+      - if index < 2
+        div.suggestionTrailerContainer
+          iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
+          iframe.suggestionTrailer src="https://www.youtube.com/embed/#{item.trailer_url}" frameborder="0" allowfullscreen
 - else
   li No matches

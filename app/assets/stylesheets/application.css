@@ -1,9 +1,9 @@
 :root {
   --font-color: #EFEFEF;
   --font-secondary:#050B18;
-  --theme-color: #1c5af8 ;
   --section-color: #f8f8f8;
   --section-shadow:hsla(240, 10%, 6%, 0.5);
+  --searchbar-background:#121212;
 }
 
 body {

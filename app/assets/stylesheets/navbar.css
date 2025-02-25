@@ -5,7 +5,7 @@
   align-items: center;
   padding: 16px;
   background-color: var(--section-shadow);
-  z-index: 1;
+  z-index: 1231;
   position: fixed;
   width: calc(100vw - 32px);
   top: 0;
@@ -33,10 +33,19 @@
   display: flex;
   list-style: none;
   gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbarSearch img{
+  width: 24px;
+  height: 24px;
 }
 
 .navbarButtons{
   display: flex;
+  gap: 16px;
 }
 
 .navbarLink{
@@ -56,35 +65,49 @@
   width: 588px;
   height: 24px;
   padding: 0 6px 0 6px;
+  position: relative;
+  display: none;
 }
 
 .searchButton{
-  height: 22px;
-  background-color: white;
-  margin-left: -28px;
-  border: none;
-  cursor: pointer;
-  border-left: 1px solid #cacaca;
-  padding: 0 6px;
+  display: none;
 }
 
-.searchButton img{
-  height: 14px;
+.searchBar.active{
+  display: inline-block;
 }
 
 .suggestions-list {
+  position: absolute;
   list-style: none;
   padding: 0;
   display: block;
+  z-index: 1000;
+  margin-top: 2px;
+  width: 588px;
 }
 
 .suggestions-list li {
   padding: 5px;
   cursor: pointer;
   padding: 8px;
-  background-color: grey;
+  background-color: var(--searchbar-background);
   display: flex;
   gap: 16px;
+  flex-direction: column;
+}
+
+.suggestionsContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.suggestionsText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--font-color);
 }
 
 .suggestions-list li img{
@@ -93,17 +116,16 @@
 }
 
 .suggestions-list li:hover {
-  background: #f0f0f0;
+  background: #252525;
 }
 
 .suggestionTrailerContainer{
  display: flex;
- gap: 16px; 
- background: grey;
+ justify-content: space-between;
 }
 
 .suggestionTrailer{
-  width: 50%;
+  width: calc((100%/2) - 16px);
   height:200px;
   border-radius: 16px;
   size: cover;
@@ -111,43 +133,4 @@
 
 .buttonLogout {
   background-color: transparent;
-}
-
-.menuButton,
-.closeButton {
-  cursor: pointer;
-}
-
-.menuItemList {
-  padding: 24px 0 0 36px;
-  display: flex;
-  list-style: none;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.menuItemList li {
-  font-size: 32px;
-}
-
-.menuHidden {
-  display: none;
-}
-
-.menuActive {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--primary-color);
-  display: block;
-  z-index: 999;
-}
-
-.menuClose {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  cursor: pointer;
 }
