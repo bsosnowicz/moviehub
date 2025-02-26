@@ -71,3 +71,6 @@ end
 gem "hotwire-livereload", "~> 2.0", :group => :development
 
 gem "kaminari", "~> 1.2", :github => "kaminari/kaminari"
+
+gem "stripe", "~> 13.5"
+gem "pay", "~> 8.3"

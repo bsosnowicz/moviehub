@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :register, only: [:new, :create]
   resource :session
   
+  get 'checkout', to: 'checkouts#show'
+  get 'checkout/success', to: 'checkouts#success'
+  get 'billing', to: 'billing#show'
+
   get "comments", to: "comments#index"
   get "search", to: "search#index"
   get 'suggestions', to: 'search#suggestions'
