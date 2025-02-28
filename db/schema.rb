@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_003150) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_140237) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -77,6 +77,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_003150) do
     t.index ["movie_id"], name: "index_comments_on_movie_id"
     t.index ["series_id"], name: "index_comments_on_series_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "fundings", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "goal_amount"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fundings_on_user_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -188,6 +198,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_003150) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "funding_id", null: false
+    t.decimal "amount"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funding_id"], name: "index_payments_on_funding_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
   create_table "series", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -226,9 +247,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_003150) do
   add_foreign_key "comments", "movies"
   add_foreign_key "comments", "series"
   add_foreign_key "comments", "users"
+  add_foreign_key "fundings", "users"
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+  add_foreign_key "payments", "fundings"
+  add_foreign_key "payments", "users"
   add_foreign_key "sessions", "users"
 end

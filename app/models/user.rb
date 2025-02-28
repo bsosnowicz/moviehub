@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :payments
+  has_many :fundings, through: :payments
 
   pay_customer stripe_attributes: :stripe_attributes
 

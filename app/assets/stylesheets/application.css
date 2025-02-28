@@ -18,13 +18,17 @@ body {
   min-height: 100vh;
 }
 
+.firstContainer{
+  margin-top: 64px;
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Manrope", serif;
 }
 
-a {
+a, p {
   text-decoration: none;
   color: var(--font-color);
 }

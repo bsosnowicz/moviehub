@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fundings
   root "home#index"
   resources :passwords, param: :token
   get "home/index"

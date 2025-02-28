@@ -1,11 +1,13 @@
-h1 Success
-p You just bought my stuff
 
-h2 =  "Your total was #{@session.amount_total.to_f/100}"
+div.container.firstContainer
+    h1.headerTitle Success
+    p You just bought my stuff
 
-- @line_items.each do |item|
-    h3 = item.description
-    p = item.price.unit_amount.to_f/100
-    - product = Stripe::Product.retrieve(item.price.product)
-    = image_tag(product.images.first)
-end
+    h2.headerTitle =  "Your total was #{@session.amount_total.to_f/100}"
+
+    - @line_items.each do |item|
+        p = item.description
+        p = item.price.unit_amount.to_f/100
+        - product = Stripe::Product.retrieve(item.price.product)
+        = image_tag(product.images.first)
+    end

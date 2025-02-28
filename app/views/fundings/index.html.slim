@@ -1,0 +1,12 @@
+div.container.fundingsContainer
+  p style="color: green" = notice
+
+  h1.headerTitle Fundings
+
+  #fundings
+    - @fundings.each do |funding|
+      == render funding
+      p
+        = link_to "Show this funding", funding
+
+  = link_to "New funding", new_funding_path

@@ -1,0 +1,21 @@
+p style="color: green" = notice
+
+
+div.container.firstContainer
+  == render @funding
+  
+  p = @payments_counter
+  
+  ul.paymentsList
+    - @payments_user.each do |user|
+      li
+        p = user.email_address
+        p = "#{user.amount} zł"
+
+  => link_to "Edit this funding", edit_funding_path(@funding)
+  '|
+  =< link_to "Back to fundings", fundings_path
+
+  = button_to "Destroy this funding", @funding, method: :delete
+
+  = link_to "Checkout", @checkout_session.url, class: "btn btn-checkout"
