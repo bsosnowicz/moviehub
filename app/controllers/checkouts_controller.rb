@@ -22,13 +22,17 @@ class CheckoutsController < ApplicationController
     
     amount = line_items.data.first.amount_total / 100.0 if line_items.data.any?
   
-    if stripe_session.status == "complete" && @funding
+    if stripe_session.status == "complete" && stripe_session.payment_status = "paid"
       @payment = @funding.payment.create(
         user_id: current_user.id,
         amount: amount,
         status: "success",
         funding_id: @funding.id 
       )
+      
+      @funding.goal_amount -= amount
+      @funding.save
+
       flash[:notice] = "Payment went through"
     else
       flash[:alert] = "Payment didn't go through or funding not found"
