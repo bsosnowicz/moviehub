@@ -4,24 +4,27 @@ class FundingsController < ApplicationController
   # GET /fundings or /fundings.json
   def index
     @fundings = Funding.all
+    @objects = Stripe::Product.list({limit: 3})
   end
 
   # GET /fundings/1 or /fundings/1.json
   def show
-    @funding = Funding.find(params[:id])
+    @funding = Funding.find_by(id: params[:id]) || Funding.find_by(stripe_product_id: params[:id])
     @payments = Payment.where(funding_id: @funding.id)
     @payments_counter = @payments.count
     @payments_user = User.joins(:payments).where(payments: { funding_id: @funding.id }).select("users.id, users.email_address, payments.amount")
-
-
+    @stripe_product = Stripe::Product.retrieve(@funding.stripe_product_id)
+    @stripe_price = @stripe_product.default_price
+    
     @checkout_session = current_user
       .payment_processor
       .checkout(
         mode: 'payment',
-        line_items: [{ price: 'price_1QwYDWQvbebYZKm7fooFKsXO', quantity: 1 }],
+        line_items: [{ price: @stripe_price, quantity: 1 }],
         success_url: "#{checkout_success_url}?funding_id=#{@funding.id}"
       )
   end
+  
 
   # GET /fundings/new
   def new
@@ -36,6 +39,22 @@ class FundingsController < ApplicationController
   def create
     @funding = Funding.new(funding_params)
     @funding.user = current_user
+
+    
+    if @funding.save
+      stripe_product = Stripe::Product.create({
+        name: @funding.title,
+        description: @funding.description,
+        images:  ['https://www.science.org/do/10.1126/science.opms.aav3708/abs/14septfacultylead.jpg'],
+        default_price_data: {
+          currency: 'pln',
+          unit_amount:(@funding.goal_amount.to_f * 100).to_i
+        }
+      })
+
+      @funding.update(stripe_product_id: stripe_product.id)
+      @funding.update(image_url: 'https://www.science.org/do/10.1126/science.opms.aav3708/abs/14septfacultylead.jpg')
+    end 
 
     respond_to do |format|
       if @funding.save
@@ -79,6 +98,6 @@ class FundingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def funding_params
-      params.expect(funding: [ :title, :description, :goal_amount, :user_id ])
+      params.require(:funding).permit( :title, :description, :goal_amount, :user_id,:my_file, :image_url )
     end
 end

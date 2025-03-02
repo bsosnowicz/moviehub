@@ -4,9 +4,12 @@ div.container.fundingsContainer
   h1.headerTitle Fundings
 
   #fundings
-    - @fundings.each do |funding|
-      == render funding
-      p
-        = link_to "Show this funding", funding
+    ul.fundingsList
+      - @fundings.each do |funding|
+        li.fundingsItem
+          = link_to funding_path(funding) do
+            = image_tag url_for(funding.image_url), class: "fundingImage"
+            h4 = funding.title
+            p = funding.description
 
   = link_to "New funding", new_funding_path

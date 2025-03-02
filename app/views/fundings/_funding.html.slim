@@ -2,11 +2,13 @@ div id="#{dom_id funding}"
   p
     h4.headerTitle = funding.title
   p
+    = "#{funding.goal_amount} zł"
+  p
     strong Description:
     =< funding.description
-  p
-    strong Goal amount:
-    =< funding.goal_amount
+    
   p
     strong User:
     =< funding.user.email_address
+
+  = image_tag url_for(funding.image_url), class: "fundingImage"

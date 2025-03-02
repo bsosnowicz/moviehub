@@ -6,3 +6,22 @@
     margin: 60px 0;
     list-style: none;
 }
+
+.fundingsList{
+    display: flex;
+    gap: 24px;
+}
+
+.fundingsItem{
+    background-color: var(--section-color);
+    color: var(--font-secondary);
+    width: calc(100%/3 - 24px)
+}
+
+.fundingsItem h4, p{
+    color: var(--font-secondary);
+}
+
+.fundingImage{
+    width: 100%;
+}
