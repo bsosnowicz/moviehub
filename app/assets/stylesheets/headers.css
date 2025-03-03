@@ -13,3 +13,17 @@
     color: #ffffffb3;
     margin-bottom:6px;
 }
+
+.headerFunding{
+    font-size :24px;
+    font-weight: 700;
+    line-height: 48px;
+    color: var(--font-secondary);
+}
+
+.subheaderFunding{
+    font-size :20px;
+    font-weight: 700;
+    line-height: 36px;
+    color: var(--font-secondary);
+}

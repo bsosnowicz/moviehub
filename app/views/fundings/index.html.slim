@@ -6,10 +6,17 @@ div.container.fundingsContainer
   #fundings
     ul.fundingsList
       - @fundings.each do |funding|
+        - total_payments = @payments_amounts[funding.id].to_f
+        - progress_percentage = (total_payments / funding.goal_amount * 100).clamp(0, 100) 
         li.fundingsItem
           = link_to funding_path(funding) do
             = image_tag url_for(funding.image_url), class: "fundingImage"
-            h4 = funding.title
-            p = funding.description
+            div.fundingTextContainer
+              p.headerFunding = "#{funding.goal_amount} zł"
+              h4.subheaderFunding = funding.title
+              div.progress
+                div.progressBar style="width: #{progress_percentage}%"
+                  p = "#{progress_percentage.round(2)}%"
+              p.fundingDescription = funding.description
 
   = link_to "New funding", new_funding_path

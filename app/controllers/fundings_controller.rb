@@ -5,6 +5,7 @@ class FundingsController < ApplicationController
   def index
     @fundings = Funding.all
     @objects = Stripe::Product.list({limit: 3})
+    @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
   end
 
   # GET /fundings/1 or /fundings/1.json
@@ -48,7 +49,7 @@ class FundingsController < ApplicationController
         images:  ['https://www.science.org/do/10.1126/science.opms.aav3708/abs/14septfacultylead.jpg'],
         default_price_data: {
           currency: 'pln',
-          unit_amount:(@funding.goal_amount.to_f * 100).to_i
+          unit_amount:(@funding.stripe_single_price.to_f * 100).to_i
         }
       })
 
@@ -98,6 +99,6 @@ class FundingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def funding_params
-      params.require(:funding).permit( :title, :description, :goal_amount, :user_id,:my_file, :image_url )
+      params.require(:funding).permit( :title, :description, :goal_amount, :user_id, :image_url, :stripe_single_price )
     end
 end
