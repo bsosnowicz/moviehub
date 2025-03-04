@@ -9,4 +9,5 @@ div.container.firstContainer
         p = item.description
         p = item.price.unit_amount.to_f/100
         - product = Stripe::Product.retrieve(item.price.product)
+        
     end

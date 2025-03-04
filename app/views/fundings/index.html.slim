@@ -12,11 +12,10 @@ div.container.fundingsContainer
           = link_to funding_path(funding) do
             = image_tag url_for(funding.image_url), class: "fundingImage"
             div.fundingTextContainer
-              p.headerFunding = "#{funding.goal_amount} zł"
+              p.headerFunding = "#{funding.goal_amount.to_i} PLN"
               h4.subheaderFunding = funding.title
               div.progress
                 div.progressBar style="width: #{progress_percentage}%"
-                  p = "#{progress_percentage.round(2)}%"
               p.fundingDescription = funding.description
 
   = link_to "New funding", new_funding_path

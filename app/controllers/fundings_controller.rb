@@ -13,7 +13,7 @@ class FundingsController < ApplicationController
     @funding = Funding.find_by(id: params[:id]) || Funding.find_by(stripe_product_id: params[:id])
     @payments = Payment.where(funding_id: @funding.id)
     @payments_counter = @payments.count
-    @payments_user = User.joins(:payments).where(payments: { funding_id: @funding.id }).select("users.id, users.email_address, payments.amount")
+    @payments_user = User.joins(:payments).where(payments: { funding_id: @funding.id }).select("users.email_address, payments.amount")
     @stripe_product = Stripe::Product.retrieve(@funding.stripe_product_id)
     @stripe_price = @stripe_product.default_price
     

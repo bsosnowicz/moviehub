@@ -17,13 +17,13 @@
 .headerFunding{
     font-size :24px;
     font-weight: 700;
-    line-height: 48px;
-    color: var(--font-secondary);
+    line-height: 32px;
+    color: var(--font-primary);
 }
 
 .subheaderFunding{
     font-size :20px;
     font-weight: 700;
     line-height: 36px;
-    color: var(--font-secondary);
+    color: var(--font-primary);
 }

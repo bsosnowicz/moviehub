@@ -1,14 +1,19 @@
 div id="#{dom_id funding}"
-  p
-    h4.headerTitle = funding.title
-  p
-    = "#{funding.goal_amount} zł"
-  p
-    strong Description:
-    =< funding.description
-    
-  p
-    strong User:
-    =< funding.user.email_address
-
-  = image_tag url_for(funding.image_url), class: "fundingImage"
+  div.fundingItemContainer
+    div.fundingItemMain
+      = image_tag url_for(funding.image_url), class: "fundingItemImage"
+      div.fundingItemDescription
+        h4.headerFunding = funding.title
+        p = funding.description
+    aside.fundingItemAside
+      div.fundingItemDeposit
+        = "#{funding.goal_amount} zł"
+      div.fundingItemAuthor
+        = funding.user.email_address
+      div.fundingItemPayments
+        p = @payments_counter
+        ul.paymentsList
+          - @payments_user.each do |user|
+            li
+              p = user.email_address
+              p = "#{user.amount} zł"
