@@ -54,7 +54,7 @@
 }
 
 .fundingItemTargetText{
-    color: #2A6FFF;
+    color: var(--theme-color);
     font-size: 24px;
     font-weight: 700;
 }

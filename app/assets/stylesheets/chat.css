@@ -2,10 +2,74 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background-color: var(--section-color);
-    padding: 8px 24px;
+    border: 2px solid var(--section-color);
+    height: 600px;
+    width: 340px;
+    border-radius: 12px;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.chatTopContainer{
+    height: 80px;
+    background-color: var(--theme-color);
+    border-top-left-radius:12px ;
+    border-top-right-radius:12px ;
+    display: flex;
+}
+
+.chatConversation{
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 8, 26, 0.95) 0%, #0E0E11 100%);
 }
 
 .chatContainer p {
     color: var(--font-secondary);
 }
+
+.chatConversation{
+    display: flex;
+    flex-direction: column;
+}
+
+.chatConversation strong, pre{
+    color: var(--font-color);
+}
+
+.chatIcon{
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
+
+.chatContainer form{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: var(--section-color);
+    border-radius: 12px;
+
+}
+
+.chatTextArea{
+  width: 70%;
+  height: 100px;
+  padding: 10px;
+  background-color: var(--section-color);
+  border-radius: 12px;
+  border:transparent;
+}
+
+.chatButton {
+    display: block; 
+    padding: 10px 20px;
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+  }

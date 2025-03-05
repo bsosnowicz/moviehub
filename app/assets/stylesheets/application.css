@@ -1,6 +1,7 @@
 :root {
   --font-color: #EFEFEF;
   --font-secondary:#050B18;
+  --theme-color:#2A6FFF;
   --section-color: #f8f8f8;
   --section-shadow:hsla(240, 10%, 6%, 0.5);
   --searchbar-background:#121212;
