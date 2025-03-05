@@ -30,9 +30,6 @@ class CheckoutsController < ApplicationController
         funding_id: @funding.id 
       )
       
-      @funding.goal_amount -= amount
-      @funding.save
-
       flash[:notice] = "Payment went through"
     else
       flash[:alert] = "Payment didn't go through or funding not found"

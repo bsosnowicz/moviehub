@@ -10,8 +10,9 @@ class FundingsController < ApplicationController
 
   # GET /fundings/1 or /fundings/1.json
   def show
-    @funding = Funding.find_by(id: params[:id]) || Funding.find_by(stripe_product_id: params[:id])
+    @funding = Funding.find(params[:id])
     @payments = Payment.where(funding_id: @funding.id)
+    @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
     @payments_counter = @payments.count
     @payments_user = User.joins(:payments).where(payments: { funding_id: @funding.id }).select("users.email_address, payments.amount")
     @stripe_product = Stripe::Product.retrieve(@funding.stripe_product_id)

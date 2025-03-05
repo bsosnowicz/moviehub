@@ -1,19 +1,33 @@
 div id="#{dom_id funding}"
   div.fundingItemContainer
+    - total_payments = @payments_amounts[funding.id].to_f
+    - progress_percentage = (total_payments / funding.goal_amount * 100).clamp(0, 100)
+
     div.fundingItemMain
       = image_tag url_for(funding.image_url), class: "fundingItemImage"
       div.fundingItemDescription
         h4.headerFunding = funding.title
-        p = funding.description
+        p.fundingItemDescription = funding.description
+
     aside.fundingItemAside
       div.fundingItemDeposit
-        = "#{funding.goal_amount} zł"
+        div.fundingItemTarget
+          span.fundingItemTargetText = "#{total_payments.to_i} PLN"
+          span.fundingItemTargetTextSecondary = " z #{funding.goal_amount.to_i} PLN"
+        div.progress
+          div.progressBar style="width: #{progress_percentage}%"
+        = link_to "Checkout", @checkout_session.url, class: "btn btnCheckout"
       div.fundingItemAuthor
-        = funding.user.email_address
+        div.fundingItemAuthorContainer
+          = image_tag "/images/user.png", class:"userAvatar"
+          p = funding.user.email_address
+          p  Funding author
       div.fundingItemPayments
-        p = @payments_counter
+        p = "Donations: #{@payments_counter}"
         ul.paymentsList
           - @payments_user.each do |user|
             li
-              p = user.email_address
-              p = "#{user.amount} zł"
+              = image_tag "/images/user.png", class:"userAvatar"
+              div
+                p = user.email_address
+                p = "#{user.amount} zł"
