@@ -124,15 +124,21 @@ GEM
     digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     ed25519 (1.3.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    event_stream_parser (0.3.0)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     ffi (1.17.1-x64-mingw-ucrt)
@@ -229,6 +235,7 @@ GEM
     minitest (5.25.4)
     msgpack (1.7.5)
     multi_json (1.15.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
     net-http (0.6.0)
       uri
@@ -358,6 +365,10 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    ruby-openai (5.2.0)
+      event_stream_parser (>= 0.3.0, < 1.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)
@@ -449,6 +460,7 @@ DEPENDENCIES
   cancancan
   capybara
   debug
+  dotenv-rails
   google-cloud-storage
   hotwire-livereload (~> 2.0)
   importmap-rails
@@ -461,6 +473,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   ransack
   rubocop-rails-omakase
+  ruby-openai (~> 5.1)
   selenium-webdriver
   slim-rails
   solid_cable

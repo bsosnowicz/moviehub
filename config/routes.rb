@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get "comments", to: "comments#index"
   get "search", to: "search#index"
   get 'suggestions', to: 'search#suggestions'
+
+  get 'chat', to: 'chat#index'
+  resource :chat_responses
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

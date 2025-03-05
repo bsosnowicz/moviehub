@@ -18,6 +18,9 @@ gcs.keyfile
 !/log/.keep
 !/tmp/.keep
 
+# Dotenv file
+.env
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/

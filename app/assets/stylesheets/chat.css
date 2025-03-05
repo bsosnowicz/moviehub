@@ -1,0 +1,11 @@
+.chatContainer {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--section-color);
+    padding: 8px 24px;
+}
+
+.chatContainer p {
+    color: var(--font-secondary);
+}
