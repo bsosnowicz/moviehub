@@ -1,7 +1,8 @@
 p style="color: green" = notice
 
-=< link_to "Back to series", series_index_path, class:"backButton"
-
+= link_to series_index_path, class: "backButton" do
+    = image_tag 'back.svg', alt: "Back to movies", class: "backIcon"
+  
 == render @series
 
 div.actorsContainer

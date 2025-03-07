@@ -1,6 +1,7 @@
 p style="color: green" = notice
 
-=< link_to "Back to actors", actors_path, class:"backButton"
+= link_to actors_path, class: "backButton" do
+    = image_tag 'back.svg', alt: "Back to movies", class: "backIcon"
   
 == render @actor
 
