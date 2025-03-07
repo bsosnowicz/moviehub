@@ -1,4 +1,4 @@
-import {Controller} from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
     static targets = ["prompt", "conversation"]
@@ -12,26 +12,31 @@ export default class extends Controller {
     generateResponse(event) {
         event.preventDefault()
 
-        this.#createLabel('You')
-        this.#createMessage(this.promptTarget.value)
-        this.#createLabel('ChatGPT')
-        this.currentPre = this.#createMessage()
+        this.#createMessageBlock(this.promptTarget.value, 'chatMessagePrompt')
+        this.currentPre = this.#createMessageBlock('', 'chatMessageAnswer', true)
 
         this.#setupEventSource()
-
         this.promptTarget.value = ""
     }
 
-    #createLabel(text) {
-        const label = document.createElement('strong');
-        label.innerHTML = `${text}:`;
-        this.conversationTarget.appendChild(label);
-    }
+    #createMessageBlock(messageText, messageClass, addIcon = false) {
+        const liElement = document.createElement('li')
+        liElement.classList.add('chatMessageContainer')
 
-    #createMessage(text = '') {
-        const preElement = document.createElement('pre');
-        preElement.innerHTML = text;
-        this.conversationTarget.appendChild(preElement);
+        if (addIcon) {
+            const icon = document.createElement('img')
+            icon.src = "/assets/chat-ddaa28e1.svg"
+            icon.classList.add('chatIcon')
+            liElement.appendChild(icon)
+        }
+
+        const preElement = document.createElement('pre')
+        preElement.innerHTML = messageText
+        preElement.classList.add(messageClass)
+
+        liElement.appendChild(preElement)
+        this.conversationTarget.appendChild(liElement)
+
         return preElement
     }
 
@@ -42,10 +47,10 @@ export default class extends Controller {
     }
 
     #handleMessage(event) {
-        const parsedData = JSON.parse(event.data);
-        this.currentPre.innerHTML += parsedData.message;
+        const parsedData = JSON.parse(event.data)
+        this.currentPre.innerHTML += parsedData.message
 
-        this.conversationTarget.scrollTop = this.conversationTarget.scrollHeight;
+        this.conversationTarget.scrollTop = this.conversationTarget.scrollHeight
     }
 
     #handleError(event) {

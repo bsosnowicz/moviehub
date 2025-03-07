@@ -6,6 +6,9 @@ import "search";
 document.addEventListener("DOMContentLoaded", function() {
   const openSearchBar = document.querySelector("#searchButton");
   const searchField = document.querySelector(".searchBar");
+  const closeChatButton = document.querySelector(".chatCloseIcon")
+  const openChatButton = document.querySelector(".chatOpenContainer")
+  const chatBox = document.querySelector(".chatContainer")
 
   openSearchBar.addEventListener("click", () => {
     searchField.classList.toggle("active");
@@ -16,4 +19,15 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log("Selected rating:", this.value);
       });
   });
+
+  closeChatButton.addEventListener("click", ()=>{
+    chatBox.style.display = "none"
+    openChatButton.style.display = "flex"
+  })
+
+  openChatButton.addEventListener("click", ()=>{
+    chatBox.style.display = "flex"
+    openChatButton.style.display = "none"
+  })
+
 });
