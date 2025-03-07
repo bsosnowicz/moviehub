@@ -68,6 +68,6 @@ class SeriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def series_params
-      params.expect(series: [ :title, :description, :rating, :release_date, :no_of_seasons, :category, :image_url, :my_file, :trailer_url, actor_ids: [] ])
+      params.expect(series: [ :title, :description, :rating, :release_date, :no_of_seasons, :category, :director ,:image_url, :my_file, :trailer_url, actor_ids: [] ])
     end
 end
