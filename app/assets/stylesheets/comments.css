@@ -50,6 +50,10 @@
       margin-top: 30px;
 }
 
+.commentsTitle{
+  color: var(--font-color);
+}
+
   .rating {
     display: flex;
     flex-direction: row-reverse;

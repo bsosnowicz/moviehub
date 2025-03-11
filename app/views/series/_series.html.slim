@@ -1,25 +1,32 @@
-div id="#{dom_id series}"
+div.collectionItemSection id="#{dom_id(series)}"
   div.collectionItemContainer
-    = image_tag series.my_file.attached? ? url_for(series.my_file) : series.image_url, class:"collectionItemThumbnail"
+    = image_tag series.my_file.attached? ? url_for(series.my_file) : series.image_url, class: "collectionItemThumbnail"
     div.collectionItemTextContainer
-      p.collectionItemTitle
-        =< series.title.upcase
-      div.collectionItemData
-        p.collectionItemRating
-          strong Rating:
-          =< "#{series.rating} / 10.0"
-        p.collectionItemDate
-          strong Release date:
-          =< series.release_date
-        p.collectionItemLength
-          strong Length:
-          =< "#{series.no_of_seasons} seasons"
-        p.collectionItemCategory
-          strong Category:
-          =< series.category
-      p.collectionItemDescription
-        strong Description:
-        =< series.description   
-      div.collectionItemButtonContainer
-        => link_to "Edit this serie", edit_series_path(@series), class:"collectionItemEditButton" if authenticated?
-        = button_to "Delete this serie", @series, method: :delete, class:"collectionItemDeleteButton"  if authenticated?
+      h4.collectionItemTitle
+        = series.title.upcase
+      div.collectionItemText
+        div.collectionItemText--left
+          div.collectionItemCategoryContainer
+            p.collectionItemCategory
+              = series.category
+            p.collectionItemCategory
+              = series.category
+            p.collectionItemCategory
+              = series.category
+          div.collectionItemData
+            p.collectionItemRating
+              = image_tag "star.svg", class: "collectionItemStar"
+              = series.rating
+            p.collectionItemDescription
+              = series.description
+          div.collectionItemButtonContainer
+            = link_to "EDIT THIS SERIES", edit_series_path(@series), class: "collectionItemButton" if authenticated?
+            = button_to "DELETE THIS SERIES", @series, method: :delete, class: "collectionItemButton--secondary" if authenticated?
+        div.collectionItemText--right
+          h5.collectionItemTextHeader Release Date
+          p.collectionItemRight = series.release_date
+          h5.collectionItemTextHeader Number of seasons
+          p.collectionItemRight = "#{series.no_of_seasons} min"
+          h5.collectionItemTextHeader Director
+          p.collectionItemRight = series.director
+          

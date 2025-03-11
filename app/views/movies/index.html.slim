@@ -10,6 +10,5 @@ p style="color: green" = notice
             = image_tag movie.my_file.attached? ? url_for(movie.my_file) : movie.image_url, class:"collectionThumbnail"
             h4.collectionTitle = movie.title
             p.collectionCategory = "#{movie.category} | #{movie.release_date}"
-  
   button.addNewButton = link_to "+ Add new movie", new_movie_path
   = paginate @movies
