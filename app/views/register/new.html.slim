@@ -1,17 +1,17 @@
 h1 Rejestracja
 
-= form_with model: @user, url: register_index_path, method: :post do |f|
-  .field
-    = f.label :email_address
-    = f.email_field :email_address
+div.loginContainer.container
+  div.loginRightPanel
+    h2.loginTitle Create an account
+    = form_with model: @user, url: register_index_path, html: {class: "loginForm"},  method: :post do |f|
+      .field
+        = f.email_field :email_address, placeholder: "Email", class:"loginInput"
 
-  .field
-    = f.label :password
-    = f.password_field :password
+      .field
+        = f.password_field :password, placeholder: "Password", class:"loginInput"
 
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+      .field
+        = f.password_field :password_confirmation, placeholder: "Confirm password", class:"loginInput"
 
-  .actions
-    = f.submit "Zarejestruj się"
+      .actions
+        = f.submit "Create account", class:"loginButton"

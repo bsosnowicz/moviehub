@@ -1,12 +1,12 @@
 = tag.div(flash[:alert], style: "color:red") if flash[:alert]
 = tag.div(flash[:notice], style: "color:green") if flash[:notice]
 
-= form_with url: session_path do |form|
-  = form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address]
-  br
-  = form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72
-  br
-  = form.submit "Sign in"
-br
+div.loginContainer.container
+  div.loginRightPanel
+    h2.loginTitle Log in to your account
+    = form_with url: session_path, html: {class: "loginForm"} do |form|
+      = form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Email", value: params[:email_address], class:"loginInput"
+      = form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password", maxlength: 72, class:"loginInput"
+      = form.submit "Sign in", class:"loginButton"
+      = link_to "Forgot password?", new_password_path
 
-= link_to "Forgot password?", new_password_path
