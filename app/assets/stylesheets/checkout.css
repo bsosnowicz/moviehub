@@ -1,3 +1,62 @@
-.checkoutContainer{
-    margin-top: 64px;
+.successContainer{
+    height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.successTransactionContainer{
+    width: 332px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.successMainContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.successTransactionText{
+    border: 1px solid #1A1F30;
+    padding: 16px;
+}
+
+.successThanksContainer{
+    width: 50%;
+}
+
+.successImage{
+    width: 100%;
+    height:176px;
+}
+
+.successTransactionData{
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.successPaymentValue{
+    margin-top: 24px;
+}
+
+.successShareContainer{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #1A1F30;
+    padding: 24px;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.successShareButton{
+    background-color: var(--theme-color);
+    border: none;
+    padding: 6px 10px;
+    font-size: 16px;
+    color: var(--font-color);
+    font-weight: 500;
+    cursor: pointer;
 }

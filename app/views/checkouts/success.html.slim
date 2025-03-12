@@ -1,13 +1,27 @@
 
-div.container.firstContainer
-    h1.headerTitle Success
-    p You just bought my stuff
+div.container.successContainer
+    - total_payments = @payments_amounts[@funding.id].to_f
+    - progress_percentage = (total_payments / @funding.goal_amount * 100).clamp(0, 100) 
 
-    h2.headerTitle =  "Your total was #{@session.amount_total.to_f/100}"
-
-    - @line_items.each do |item|
-        p = item.description
-        p = item.price.unit_amount.to_f/100
-        - product = Stripe::Product.retrieve(item.price.product)
-        
-    end
+    div.successMainContainer
+        div.successTransactionContainer
+            = image_tag url_for(@funding.image_url), class: "successImage"
+            div.successTransactionText
+                - @line_items.each do |item|
+                    h3.headerFunding = item.description
+                    p.successPaymentValue style="margin-left: #{progress_percentage - 8}%" = "+ #{@session.amount_total.to_i/100} zł"
+                    div.progress
+                        div.progressBar style="width: #{progress_percentage}%"
+                    div.successTransactionData
+                        div
+                            p.subheaderFunding = "#{@payments_amounts[@funding.id].to_i} zł"
+                            p.headerSubheading Collected
+                        div
+                            p.subheaderFunding = @payments_counter
+                            p.headerSubheading Supporters
+        div.successThanksContainer
+            h4.headerFunding Thanks for your payment!
+            p.headerSubheading Your support brings us closer to making this film a reality. Every contribution helps turn this story into a finished production. Remember, you can also support independent cinema or start your own crowdfunding campaign for a film with no fees!
+            div.successShareContainer
+                p Share this campaign
+                button.successShareButton Share
