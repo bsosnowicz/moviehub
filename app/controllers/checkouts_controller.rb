@@ -16,10 +16,13 @@ class CheckoutsController < ApplicationController
     session_id = params[:stripe_checkout_session_id] 
     stripe_session = Stripe::Checkout::Session.retrieve(session_id)
     line_items = Stripe::Checkout::Session.list_line_items(session_id)
-  
     funding_id = params[:funding_id]
     @funding = Funding.find_by(id: funding_id)
-    
+    @payments = Payment.where(funding_id: funding_id)
+    @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
+    @payments_counter = @payments.count
+
+
     amount = line_items.data.first.amount_total / 100.0 if line_items.data.any?
   
     if stripe_session.status == "complete" && stripe_session.payment_status = "paid"
