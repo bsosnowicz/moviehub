@@ -1,15 +1,14 @@
 p style="color: green" = notice
 
-h1 Actors
+div.container
+  ul.collectionList
+    - @actors.each do |actor|
+      li 
+        = link_to actor_path(actor) do
+          .collectionItem
+            = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"collectionThumbnail"
+            h4.collectionTitle = "#{actor.name} #{actor.surname}"
+            p.collectionRating = "#{actor.rating} / 10" 
 
-ul.collectionList
-  - @actors.each do |actor|
-    li 
-      = link_to actor_path(actor) do
-        .collectionItem
-          = image_tag actor.my_file.attached? ? url_for(actor.my_file) : actor.image_url, class:"collectionThumbnail"
-          h4.collectionTitle = "#{actor.name} #{actor.surname}"
-          p.collectionRating = "#{actor.rating} / 10" 
-      
-button.addNewButton = link_to "+ Add new actor", new_actor_path
-= paginate @actors
+  / button.addNewButton = link_to "+ Add new actor", new_actor_path
+  = paginate @actors

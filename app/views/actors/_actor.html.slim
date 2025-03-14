@@ -17,6 +17,6 @@ div id="#{dom_id actor}"
         p.collectionItemHeight
           strong Height:
           =< "#{actor.height} min"
-      div.collectionItemButtonContainer
-        => link_to "Edit this actor", edit_actor_path(actor),  class:"collectionItemEditButton" if authenticated?
-        = button_to "Destroy this actor", @actor, method: :delete, class:"collectionItemDeleteButton" if authenticated?
+      / div.collectionItemButtonContainer
+      /   => link_to "Edit this actor", edit_actor_path(actor),  class:"collectionItemEditButton" if authenticated?
+      /   = button_to "Destroy this actor", @actor, method: :delete, class:"collectionItemDeleteButton" if authenticated?
