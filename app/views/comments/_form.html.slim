@@ -1,6 +1,5 @@
-= form_with(model: [movie, comment], id: "comment-#{comment.id || 'new'}", data: { turbo: true }) do |form|
+= form_with(model: [movie, comment], id: "comment-#{comment.id || 'new'}", data: { turbo: true }, class:"ratingForm") do |form|
   p
-    = form.label :rating, style: "display: block"
     .rating
       - (1..10).reverse_each do |i|
         input id="star-#{comment.id || 'new'}-#{i}" name="comment[rating]" type="radio" value="#{i}" checked="#{comment.rating == i ? 'checked' : nil}"
@@ -8,4 +7,4 @@
   p
     = form.text_area :content, class: "commentsTextArea"
   p
-    = form.submit "Add comment", class: "addNewButton"
+    = form.submit "Add comment", class: "commentsButton"
