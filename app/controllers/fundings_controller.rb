@@ -3,6 +3,8 @@ class FundingsController < ApplicationController
 
   # GET /fundings or /fundings.json
   def index
+    Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)
+
     @fundings = Funding.all
     @objects = Stripe::Product.list({limit: 3})
     @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
@@ -10,6 +12,8 @@ class FundingsController < ApplicationController
 
   # GET /fundings/1 or /fundings/1.json
   def show
+    Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)
+
     @funding = Funding.find(params[:id])
     @payments = Payment.where(funding_id: @funding.id)
     @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
@@ -23,7 +27,8 @@ class FundingsController < ApplicationController
       .checkout(
         mode: 'payment',
         line_items: [{ price: @stripe_price, quantity: 1 }],
-        success_url: "#{checkout_success_url}?funding_id=#{@funding.id}"
+        success_url: "#{checkout_success_url}?funding_id=#{@funding.id}",
+        metadata: { funding_id: @funding.id, user_id: current_user.id }
       )
   end
   

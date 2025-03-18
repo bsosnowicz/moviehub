@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'
   get 'billing', to: 'billing#show'
+  post '/stripe_webhooks/webhook', to: 'stripe_webhooks#webhook'
+
 
   get "comments", to: "comments#index"
   get "search", to: "search#index"

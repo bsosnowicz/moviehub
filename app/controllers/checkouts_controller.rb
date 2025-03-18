@@ -3,43 +3,39 @@ class CheckoutsController < ApplicationController
 
   def show
     @funding = Funding.find(params[:id]) 
+
+    stripe_product = Stripe::Product.retrieve(@funding.stripe_product_id)
+    stripe_price = stripe_product.default_price
+
     @checkout_session = current_user
       .payment_processor
       .checkout(
         mode: 'payment',
-        line_items: [{ price: 'price_1QwYDWQvbebYZKm7fooFKsXO', quantity: 1 }],
-        success_url: "#{checkout_success_url}?funding_id=#{@funding.id}"
+        line_items: [{ price: stripe_price, quantity: 1 }],
+        success_url: "#{checkout_success_url}?funding_id=#{@funding.id}",
+        metadata: { funding_id: @funding.id }
       )
+
+    redirect_to @checkout_session.url, allow_other_host: true
   end
 
   def success
-    session_id = params[:stripe_checkout_session_id] 
-    stripe_session = Stripe::Checkout::Session.retrieve(session_id)
-    line_items = Stripe::Checkout::Session.list_line_items(session_id)
+    session_id = params[:stripe_checkout_session_id]
     funding_id = params[:funding_id]
     @funding = Funding.find_by(id: funding_id)
-    @payments = Payment.where(funding_id: funding_id)
-    @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
-    @payments_counter = @payments.count
 
+    if @funding
+      @payments = Payment.where(funding_id: @funding.id)
+      @payments_amounts = Payment.group(:funding_id).sum(:amount) || {}
+      @payments_counter = @payments.count
 
-    amount = line_items.data.first.amount_total / 100.0 if line_items.data.any?
-  
-    if stripe_session.status == "complete" && stripe_session.payment_status = "paid"
-      @payment = @funding.payment.create(
-        user_id: current_user.id,
-        amount: amount,
-        status: "success",
-        funding_id: @funding.id 
-      )
-      
-      flash[:notice] = "Payment went through"
+      @session = Stripe::Checkout::Session.retrieve(session_id)
+      @line_items = Stripe::Checkout::Session.list_line_items(session_id).data
     else
-      flash[:alert] = "Payment didn't go through or funding not found"
+      flash[:alert] = "Funding not found. Please contact support."
     end
-  
-    @session = stripe_session
-    @line_items = line_items
+
+    render 'checkouts/success'
   end
 
   private
