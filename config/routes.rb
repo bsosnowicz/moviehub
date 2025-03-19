@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :register, only: [:new, :create]
   resource :session
   
+  get 'movies/:id/download_pdf', to: 'documents#download_pdf', as: :download_pdf
   get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'
   get 'billing', to: 'billing#show'

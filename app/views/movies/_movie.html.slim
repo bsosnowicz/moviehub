@@ -24,6 +24,7 @@ div.collectionItemSection id="#{dom_id(movie)}"
           div.collectionItemButtonContainer
             = link_to "EDIT THIS MOVIE", edit_movie_path(@movie), class: "collectionItemButton" if authenticated?
             = button_to "DELETE THIS MOVIE", @movie, method: :delete, class: "collectionItemButton--secondary" if authenticated?
+          = link_to "Download PDF", download_pdf_path(movie)
         div.collectionItemText--right
           h5.collectionItemTextHeader Release Date
           p.collectionItemRight = movie.release_date

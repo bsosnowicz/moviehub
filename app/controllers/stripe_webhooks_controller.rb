@@ -12,11 +12,9 @@ class StripeWebhooksController < ApplicationController
         payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook_secret)
       )
     rescue JSON::ParserError, Stripe::SignatureVerificationError => e
-      Rails.logger.error "Stripe Webhook Error: #{e.message}"
       return head :bad_request
     end
 
-    Rails.logger.debug("Event type to: #{event.type}")
     case event.type
     when 'checkout.session.completed'
       handle_successful_payment(event.data.object)
