@@ -10,30 +10,38 @@ class DocumentsController < ApplicationController
       file.write URI.open(movie.image_url).read
     end
 
-    Prawn::Document.generate(pdf_path) do |pdf|
+    Prawn::Document.generate(pdf_path,) do |pdf|
       pdf.font "Helvetica"
+      
+      pdf.fill_color "00081A"
+      pdf.fill_rectangle [-pdf.bounds.absolute_left, pdf.bounds.top + 50], 
+                         pdf.bounds.absolute_right * 2, 
+                         pdf.bounds.height + 100
 
+      pdf.fill_color "EFEFEF"
+      
       pdf.text movie.title, size: 24, style: :bold, align: :center
-      pdf.move_down 10
-      pdf.stroke_horizontal_rule
       pdf.move_down 20
 
       y_position = pdf.cursor
 
       pdf.bounding_box([0, y_position], width: 200) do
-        pdf.image image_temp_path, width: 180, height: 270
+        pdf.image image_temp_path, width: 240, height: 320
       end
 
-      pdf.bounding_box([220, y_position], width: 300) do
-        pdf.text "Category: <b>#{movie.category}</b>", inline_format: true, size: 14
-        pdf.text "Rating: <b>#{movie.rating}/10</b>", inline_format: true, size: 14
-        pdf.text "Release Date: <b>#{movie.release_date}</b>", inline_format: true, size: 14
-        pdf.text "Duration: <b>#{movie.length} min</b>", inline_format: true, size: 14
-        pdf.text "Director: <b>#{movie.director}</b>", inline_format: true, size: 14
+      pdf.bounding_box([280, y_position], width: 300) do
+        pdf.text "Category: #{movie.category}", inline_format: true, size: 14
+        pdf.move_down 8
+        pdf.text "Rating: #{movie.rating}/10", inline_format: true, size: 14
+        pdf.move_down 8
+        pdf.text "Release Date: #{movie.release_date}", inline_format: true, size: 14
+        pdf.move_down 8
+        pdf.text "Duration: #{movie.length} min", inline_format: true, size: 14
+        pdf.move_down 8
+        pdf.text "Director: #{movie.director}", inline_format: true, size: 14
       end
 
-      pdf.move_down 200
-      pdf.move_down 20
+      pdf.move_down 260
 
       pdf.text "Description:", size: 16, style: :bold
       pdf.text movie.description, size: 12, align: :justify
