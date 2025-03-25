@@ -1,7 +1,24 @@
-= button_tag(type: 'button' , class:"chatOpenContainer")
+= button_tag(type: 'button', class: "chatOpenContainer")
     = image_tag "chat.svg", class: "chatOpenIcon"
 
-div.chatContainer data-controller="chat"
+/ div.chatContainer data-controller="chat"
+/     div.chatTopContainer
+/         div.logo
+/             = image_tag 'logo.svg', class: "logoIcon"
+/             h4.logoText 
+/                 span.logoSpan Movie
+/                 span hub
+                
+/         = button_tag(type: 'button', class: 'closeChatButton') do
+/             = image_tag 'close.svg', class: 'chatCloseIcon'
+
+/     section.chatConversation data-chat-target="conversation"
+/     = form_tag "#", method: :post, data: { action: "chat#generateResponse", turbo: "false" } do
+/         = text_area_tag :prompt, nil, placeholder: "Type your message...", id: 'prompt', data: { chat_target: "prompt" }, class: "chatTextArea"
+/         = button_tag type: "submit", class: "chatButton" do
+/             = image_tag "send.svg", class: "chatSendIcon"
+
+div.chatContainer data-controller="search-chat"
     div.chatTopContainer
         div.logo
             = image_tag 'logo.svg', class: "logoIcon"
@@ -12,9 +29,8 @@ div.chatContainer data-controller="chat"
         = button_tag(type: 'button', class: 'closeChatButton') do
             = image_tag 'close.svg', class: 'chatCloseIcon'
 
-    section.chatConversation data-chat-target="conversation"
-    = form_with method: :get, local: true, data: { action: "chat#generateResponse" } do |form|
-        = form.text_area :prompt, placeholder: "Type your message...", id: 'prompt', data: { chat_target: "prompt" }, class: "chatTextArea"
-        = form.button type: "submit", class: "chatButton" do
+    section.chatConversation data-search-chat-target="conversation"
+    = form_tag "#", method: :post, data: { action: "search-chat#generateResponse", turbo: "false" } do
+        = text_area_tag :prompt, nil, placeholder: "Type your search...", id: 'prompt', data: { search_chat_target: "prompt" }, class: "chatTextArea"
+        = button_tag type: "submit", class: "chatButton" do
             = image_tag "send.svg", class: "chatSendIcon"
-
