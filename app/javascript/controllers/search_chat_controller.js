@@ -17,9 +17,6 @@ export default class extends Controller {
 
         this.#setupEventSource();
         this.promptTarget.value = "";
-
-        this.fullAnswer = "";
-        this.linkSet = false;
     }
 
     #createMessageBlock(messageText, messageClass, addIcon = false) {
@@ -51,24 +48,8 @@ export default class extends Controller {
 
     #handleMessage(event) {
         const parsedData = JSON.parse(event.data);
-        this.fullAnswer += parsedData.message;
         this.currentPre.innerHTML += parsedData.message;
         this.conversationTarget.scrollTop = this.conversationTarget.scrollHeight;
-        if (!this.linkSet) {
-            const match = this.fullAnswer.match(/\/(movies|series|actors)\/\d+/);
-    
-            if (match) {
-                const path = match[0];
-                const fullUrl = `http://localhost:3000${path}`;
-    
-                this.currentPre.style.cursor = 'pointer';
-                this.currentPre.onclick = () => {
-                    window.open(fullUrl, '_blank');
-                };
-    
-                this.linkSet = true;
-            }
-        }
     }
 
     #handleError(event) {
