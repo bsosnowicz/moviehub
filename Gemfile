@@ -73,7 +73,7 @@ gem "hotwire-livereload", "~> 2.0", :group => :development
 gem "kaminari", "~> 1.2", :github => "kaminari/kaminari"
 gem 'prawn'
 
-gem "ruby-openai", "~> 5.1"
+gem "ruby-openai", "~> 8.1"
 gem "dotenv-rails"
 
 gem "stripe", "~> 13.5"
